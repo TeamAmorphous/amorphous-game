@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0a7r88erg4ce"]
+
+[ext_resource type="PackedScene" uid="uid://c7yhcuahavwd7" path="res://Forest_Big.glb" id="2_iwkw2"]
+[ext_resource type="Script" path="res://cube.gd" id="2_jgthf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pvh2v"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0380726, -0.0639248, 0.119712)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0432, 1.16596, 3.6375)
+mesh = SubResource("BoxMesh_pvh2v")
+script = ExtResource("2_jgthf")
+
+[node name="Camera3D" type="Camera3D" parent="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, -0.5, 0.866025, 0, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 10, 5, 0)
+
+[node name="Forest_Big" parent="." instance=ExtResource("2_iwkw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84991, 0.0639248, 4.64375)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.162782, -0.37697, 0.911809, 0.251059, 0.877892, 0.407768, -0.954186, 0.295295, -0.048263, 0, 40, 0)
+light_color = Color(0.768627, 1, 1, 1)
