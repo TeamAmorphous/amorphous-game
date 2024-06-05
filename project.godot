@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Amorphous"
-run/main_scene="res://node_3d.tscn"
+run/main_scene="res://scenes/Forest.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [filesystem]
