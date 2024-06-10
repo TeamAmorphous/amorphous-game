@@ -4,6 +4,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+@onready var skuldoo_sprite: SpriteBase3D = $Sprite3D
 
 func _physics_process(delta: float) -> void:
   # Add the gravity.
@@ -18,6 +19,13 @@ func _physics_process(delta: float) -> void:
   # As good practice, you should replace UI actions with custom gameplay actions.
   var input_dir := Input.get_vector("up", "down", "right", "left")
   var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+  #Check and validate sprite orientation with the current direction
+  if direction.x < 0:
+    skuldoo_sprite.flip_h = false
+  else:
+    skuldoo_sprite.flip_h = true
+
   if direction:
     velocity.x = direction.x * SPEED
     velocity.z = direction.z * SPEED
