@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfpqjsydtgif4"]
+[gd_scene load_steps=6 format=3 uid="uid://bfpqjsydtgif4"]
 
 [ext_resource type="Script" path="res://scripts/NPC.gd" id="1_lfxu2"]
 [ext_resource type="Texture2D" uid="uid://dca6utkrx53w1" path="res://assets/sprites/NPCs/Flam_NPC.png" id="1_osh34"]
@@ -9,7 +9,10 @@ margin = 0.4
 radius = 0.598797
 height = 1.50003
 
-[node name="StaticBody3D" type="StaticBody3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_jrv7h"]
+radius = 5.0
+
+[node name="Flam" type="StaticBody3D"]
 script = ExtResource("1_lfxu2")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -27,3 +30,11 @@ texture = ExtResource("2_yym5u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0185671, -0.005, 0)
 shape = SubResource("CapsuleShape3D_0bc1t")
+
+[node name="Talkable_Area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Talkable_Area"]
+shape = SubResource("SphereShape3D_jrv7h")
+
+[connection signal="body_entered" from="Talkable_Area" to="." method="_on_talkable_area_body_entered"]
+[connection signal="body_exited" from="Talkable_Area" to="." method="_on_talkable_area_body_exited"]

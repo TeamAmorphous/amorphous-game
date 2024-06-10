@@ -8,7 +8,7 @@ margin = 0.4
 radius = 0.598797
 height = 1.50003
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="Skuldoo" type="CharacterBody3D"]
 script = ExtResource("1_w3spl")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
