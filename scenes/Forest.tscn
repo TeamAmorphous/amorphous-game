@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1cnuod74sjhg"]
+[gd_scene load_steps=5 format=3 uid="uid://b1cnuod74sjhg"]
 
 [ext_resource type="PackedScene" uid="uid://dsi822o33u0a5" path="res://assets/models/Forest/Forest.glb" id="1_3s278"]
 [ext_resource type="PackedScene" uid="uid://dq2m7521idopv" path="res://scenes/Skuldoo.tscn" id="2_cmamx"]
+[ext_resource type="PackedScene" uid="uid://bfpqjsydtgif4" path="res://scenes/Flam.tscn" id="3_1tavr"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_pmgq0"]
-size = Vector3(100, 0.2, 100)
+[sub_resource type="BoxShape3D" id="BoxShape3D_n4pos"]
+size = Vector3(125, 0.1, 125.017)
 
 [node name="Node3D" type="Node3D"]
 
@@ -12,7 +13,8 @@ size = Vector3(100, 0.2, 100)
 transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_pmgq0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.428571, -5.37054)
+shape = SubResource("BoxShape3D_n4pos")
 
 [node name="Forest" parent="StaticBody3D" instance=ExtResource("1_3s278")]
 
@@ -29,3 +31,6 @@ transform = Transform3D(1, 0, 0, 0, 0.554844, 0.831954, 0, -0.831954, 0.554844, 
 light_color = Color(0.913725, 1, 1, 1)
 light_energy = 2.0
 light_angular_distance = 20.0
+
+[node name="Flam" parent="." instance=ExtResource("3_1tavr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02043, 0.293642, -3.72405)

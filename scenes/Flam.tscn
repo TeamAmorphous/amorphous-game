@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfpqjsydtgif4"]
+
+[ext_resource type="Script" path="res://scripts/NPC.gd" id="1_lfxu2"]
+[ext_resource type="Texture2D" uid="uid://dca6utkrx53w1" path="res://assets/sprites/NPCs/Flam_NPC.png" id="1_osh34"]
+[ext_resource type="Texture2D" uid="uid://48yt5l2trvmm" path="res://assets/sprites/Utils/Interaction_Bubble.png" id="2_yym5u"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0bc1t"]
+margin = 0.4
+radius = 0.598797
+height = 1.50003
+
+[node name="StaticBody3D" type="StaticBody3D"]
+script = ExtResource("1_lfxu2")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.103765, 0, 0, 0, 0.103765, 0, 0, 0, 0.103765, 0, 0, 0)
+billboard = 1
+alpha_cut = 2
+texture = ExtResource("1_osh34")
+
+[node name="SpeechBubble" type="Sprite3D" parent="Sprite3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 7, -3)
+billboard = 1
+alpha_cut = 2
+texture = ExtResource("2_yym5u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0185671, -0.005, 0)
+shape = SubResource("CapsuleShape3D_0bc1t")
