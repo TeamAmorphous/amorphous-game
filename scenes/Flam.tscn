@@ -10,7 +10,7 @@ radius = 0.598797
 height = 1.50003
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jrv7h"]
-radius = 5.0
+radius = 1.86423
 
 [node name="Flam" type="StaticBody3D"]
 script = ExtResource("1_lfxu2")

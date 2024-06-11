@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
   #Check and validate sprite orientation with the current direction
   if direction.x < 0:
     skuldoo_sprite.flip_h = false
-  else:
+  elif direction.x > 0:
     skuldoo_sprite.flip_h = true
 
   if direction:

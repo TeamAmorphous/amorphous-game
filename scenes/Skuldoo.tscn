@@ -6,7 +6,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0bc1t"]
 margin = 0.4
 radius = 0.598797
-height = 1.50003
+height = 2.13938
 
 [node name="Skuldoo" type="CharacterBody3D"]
 script = ExtResource("1_w3spl")

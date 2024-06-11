@@ -1,22 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1cnuod74sjhg"]
+[gd_scene load_steps=7 format=3 uid="uid://b1cnuod74sjhg"]
 
-[ext_resource type="PackedScene" uid="uid://dsi822o33u0a5" path="res://assets/models/Forest/Forest.glb" id="1_3s278"]
+[ext_resource type="Script" path="res://scripts/levelcontroller.gd" id="1_j12xh"]
 [ext_resource type="PackedScene" uid="uid://dq2m7521idopv" path="res://scenes/Skuldoo.tscn" id="2_cmamx"]
 [ext_resource type="PackedScene" uid="uid://bfpqjsydtgif4" path="res://scenes/Flam.tscn" id="3_1tavr"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_n4pos"]
-size = Vector3(125, 0.1, 125.017)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhrom"]
+albedo_color = Color(0.848911, 0.812981, 0.39562, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ec2bf"]
+material = SubResource("StandardMaterial3D_fhrom")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_smhu1"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="Node3D" type="Node3D"]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.428571, -5.37054)
-shape = SubResource("BoxShape3D_n4pos")
-
-[node name="Forest" parent="StaticBody3D" instance=ExtResource("1_3s278")]
+script = ExtResource("1_j12xh")
 
 [node name="Skuldoo" parent="." instance=ExtResource("2_cmamx")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.85469, 0)
@@ -33,4 +31,14 @@ light_energy = 2.0
 light_angular_distance = 20.0
 
 [node name="Flam" parent="." instance=ExtResource("3_1tavr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02043, 0.293642, -3.72405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02043, 0.660185, -3.72405)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(14.9243, 0, 0, 0, 1, 0, 0, 0, 14.7191, 0, -0.525857, 0)
+mesh = SubResource("BoxMesh_ec2bf")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_smhu1")
