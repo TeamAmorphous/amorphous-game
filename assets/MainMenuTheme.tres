@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b2symora7jfhn"]
+
+[ext_resource type="FontFile" uid="uid://dw2o73nd2m4g6" path="res://assets/Amorphous30-Regular.ttf" id="1_ri4yk"]
+[ext_resource type="FontFile" uid="uid://b1bvm2b4g1x03" path="res://assets/Amorphous.ttf" id="1_ytpbj"]
+
+[sub_resource type="FontVariation" id="FontVariation_d1x5t"]
+base_font = ExtResource("1_ri4yk")
+variation_embolden = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xt64"]
+bg_color = Color(0.479552, 0.637771, 0.614194, 1)
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = SubResource("FontVariation_d1x5t")
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("1_ytpbj")
+LineEdit/font_sizes/font_size = 32
+LineEdit/fonts/font = ExtResource("1_ytpbj")
+Panel/styles/panel = SubResource("StyleBoxFlat_2xt64")
+TextEdit/font_sizes/font_size = 32
+TextEdit/fonts/font = ExtResource("1_ytpbj")
+Tree/font_sizes/font_size = 32
+Tree/font_sizes/title_button_font_size = 32
+Tree/fonts/font = ExtResource("1_ytpbj")
+Tree/fonts/title_button_font = ExtResource("1_ytpbj")

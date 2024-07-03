@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 
 import/blender/enabled=false
 
+[gui]
+
+theme/custom="res://assets/AmorphousTheme.tres"
+theme/custom_font="res://assets/BoldFont.tres"
+theme/default_font_hinting=2
+
 [input]
 
 up={

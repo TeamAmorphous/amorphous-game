@@ -17,6 +17,9 @@ const speech_scale_down := Vector3(0.76923077, 0.76923077, 0.76923077)
 # NPC is interactable
 var player_interactable := false
 
+# Level Controller Dialogue Signal
+signal LC_InitDiag
+
 func _process(_delta: float) -> void:
 
   #Move speech bubble
@@ -27,6 +30,7 @@ func _process(_delta: float) -> void:
     vector_offset *= -1
   if Input.is_action_just_pressed("interact") and player_interactable:
     print("chat enabled!!!!")
+    LC_InitDiag.emit()
 
 # Scale up speech buble when the player is nearby
 func _on_talkable_area_body_entered(body:Node3D) -> void:

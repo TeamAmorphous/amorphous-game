@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1cnuod74sjhg"]
+[gd_scene load_steps=8 format=3 uid="uid://b1cnuod74sjhg"]
 
 [ext_resource type="Script" path="res://scripts/levelcontroller.gd" id="1_j12xh"]
 [ext_resource type="PackedScene" uid="uid://dq2m7521idopv" path="res://scenes/Skuldoo.tscn" id="2_cmamx"]
 [ext_resource type="PackedScene" uid="uid://bfpqjsydtgif4" path="res://scenes/Flam.tscn" id="3_1tavr"]
+[ext_resource type="Script" path="res://scripts/level_controller.gd" id="4_8ckbe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhrom"]
 albedo_color = Color(0.848911, 0.812981, 0.39562, 1)
@@ -20,9 +21,10 @@ script = ExtResource("1_j12xh")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.85469, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Skuldoo"]
-transform = Transform3D(-4.37114e-08, -0.231748, 0.972776, 0, 0.972776, 0.231748, -1, 1.013e-08, -4.25214e-08, 15, 5, 0)
+transform = Transform3D(-4.37114e-08, -0.189095, 0.981959, 0, 0.981959, 0.189095, -1, 8.26562e-09, -4.29228e-08, 15.8007, 3.98217, 3.27455e-07)
 current = true
-fov = 25.9
+fov = 20.0
+size = 0.045
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.554844, 0.831954, 0, -0.831954, 0.554844, 0, 5, 0)
@@ -42,3 +44,8 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_smhu1")
+
+[node name="LevelController" type="Node" parent="."]
+script = ExtResource("4_8ckbe")
+
+[connection signal="LC_InitDiag" from="Flam" to="LevelController" method="_on_flam_lc_init_diag"]

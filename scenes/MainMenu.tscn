@@ -1,0 +1,125 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtu2rqxbgaquq"]
+
+[ext_resource type="Theme" uid="uid://b2symora7jfhn" path="res://assets/MainMenuTheme.tres" id="1_ip04p"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_yvj5n"]
+[ext_resource type="FontFile" uid="uid://dw2o73nd2m4g6" path="res://assets/Amorphous30-Regular.ttf" id="3_o72rg"]
+[ext_resource type="Script" path="res://scripts/diagonal_container.gd" id="4_utbf1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_peos1"]
+font = ExtResource("3_o72rg")
+font_size = 110
+outline_size = 7
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 1.156
+anchor_bottom = 1.0
+offset_right = -179.712
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ip04p")
+script = ExtResource("2_yvj5n")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 649.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 115
+theme_override_constants/margin_right = 95
+theme_override_constants/margin_bottom = 110
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "Amorphous"
+label_settings = SubResource("LabelSettings_peos1")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+script = ExtResource("4_utbf1")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+offset_left = 430.0
+offset_top = 187.0
+offset_right = 593.0
+offset_bottom = 236.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NewGame" type="Button" parent="MarginContainer/Control/PanelContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+offset_left = 429.0
+offset_top = 187.0
+offset_right = 593.0
+offset_bottom = 236.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LoadGame" type="Button" parent="MarginContainer/Control/PanelContainer2"]
+layout_mode = 2
+text = "Load Game"
+
+[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+offset_left = 429.0
+offset_top = 187.0
+offset_right = 593.0
+offset_bottom = 236.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Extras" type="Button" parent="MarginContainer/Control/PanelContainer3"]
+layout_mode = 2
+text = "Load Game"
+
+[node name="PanelContainer4" type="PanelContainer" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+offset_left = 453.0
+offset_top = 187.0
+offset_right = 570.0
+offset_bottom = 236.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Options" type="Button" parent="MarginContainer/Control/PanelContainer4"]
+layout_mode = 2
+text = "Options"
+
+[node name="PanelContainer5" type="PanelContainer" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+offset_left = 433.0
+offset_top = 187.0
+offset_right = 590.0
+offset_bottom = 236.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Quit" type="Button" parent="MarginContainer/Control/PanelContainer5"]
+layout_mode = 2
+text = "Quit Game"
+
+[connection signal="pressed" from="MarginContainer/Control/PanelContainer/NewGame" to="." method="_on_new_game_pressed"]
