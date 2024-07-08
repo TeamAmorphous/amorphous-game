@@ -2,6 +2,8 @@
 
 [ext_resource type="FontVariation" uid="uid://cj2spsns10vod" path="res://assets/BoldFont.tres" id="1_r6rk8"]
 [ext_resource type="FontFile" uid="uid://dw2o73nd2m4g6" path="res://assets/Amorphous30-Regular.ttf" id="2_g0rxh"]
+[ext_resource type="StyleBox" uid="uid://hoes3qcu6uo" path="res://assets/ButtonHover.tres" id="2_rimaf"]
+[ext_resource type="StyleBox" uid="uid://di0nynwyasq7b" path="res://assets/ButtonNormal.tres" id="3_yg1ik"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3anx"]
 content_margin_left = 4.0
@@ -35,35 +37,6 @@ expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nil0"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.225, 0.225, 0.225, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qt1lm"]
-content_margin_left = 7.0
-content_margin_top = 7.0
-content_margin_right = 7.0
-content_margin_bottom = 7.0
-bg_color = Color(0, 0, 0, 0)
-skew = Vector2(1, 0)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 0.192157, 0.27451, 1)
-corner_detail = 5
-shadow_color = Color(0, 0, 0, 1)
-anti_aliasing = false
-anti_aliasing_size = 0.01
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfxut"]
 content_margin_left = 4.0
@@ -107,7 +80,7 @@ Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_r6rk8")
 Button/styles/disabled = SubResource("StyleBoxFlat_w3anx")
 Button/styles/focus = SubResource("StyleBoxFlat_00afp")
-Button/styles/hover = SubResource("StyleBoxFlat_8nil0")
-Button/styles/normal = SubResource("StyleBoxFlat_qt1lm")
+Button/styles/hover = ExtResource("2_rimaf")
+Button/styles/normal = ExtResource("3_yg1ik")
 Button/styles/pressed = SubResource("StyleBoxFlat_hfxut")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ng8x8")

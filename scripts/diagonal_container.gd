@@ -1,3 +1,4 @@
+@tool
 extends Control
 
 @export var offset = Vector2(-65, 65)  # Adjust this to set the distance between the PanelContainers
