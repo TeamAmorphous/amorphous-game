@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://w1y52yirx6lp"]
+
+[ext_resource type="Texture2D" uid="uid://cm8s2kjod3plj" path="res://assets/models/Forest/Forest_Tree.png" id="1_n8yfo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pn611"]
+radius = 0.147087
+height = 3.95975
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.239424, 1.47714, 0)
+shape = SubResource("CapsuleShape3D_pn611")
+
+[node name="Tree" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.37766, 0)
+pixel_size = 0.003
+texture = ExtResource("1_n8yfo")

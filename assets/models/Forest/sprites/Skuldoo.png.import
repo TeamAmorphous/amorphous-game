@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2epo6kddxxbd"
-path.s3tc="res://.godot/imported/Text_Box.png-1107b060194fa9a592e89e41d5739919.s3tc.ctex"
+uid="uid://b08g11aavdvka"
+path.s3tc="res://.godot/imported/Skuldoo.png-2c993dd2d8bb94b5a98e19aa8ddb9305.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/sprites/Utils/Text_Box.png"
-dest_files=["res://.godot/imported/Text_Box.png-1107b060194fa9a592e89e41d5739919.s3tc.ctex"]
+source_file="res://assets/models/Forest/sprites/Skuldoo.png"
+dest_files=["res://.godot/imported/Skuldoo.png-2c993dd2d8bb94b5a98e19aa8ddb9305.s3tc.ctex"]
 
 [params]
 

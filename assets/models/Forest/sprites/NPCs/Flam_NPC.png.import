@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://48yt5l2trvmm"
-path.s3tc="res://.godot/imported/Interaction_Bubble.png-d3fad152ee7252874d1b158dfe1236c7.s3tc.ctex"
+uid="uid://dca6utkrx53w1"
+path.s3tc="res://.godot/imported/Flam_NPC.png-c2b9298a087246ae38196ac8b3b11908.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/sprites/Utils/Interaction_Bubble.png"
-dest_files=["res://.godot/imported/Interaction_Bubble.png-d3fad152ee7252874d1b158dfe1236c7.s3tc.ctex"]
+source_file="res://assets/models/Forest/sprites/NPCs/Flam_NPC.png"
+dest_files=["res://.godot/imported/Flam_NPC.png-c2b9298a087246ae38196ac8b3b11908.s3tc.ctex"]
 
 [params]
 

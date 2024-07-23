@@ -2,7 +2,7 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b1bvm2b4g1x03"
+uid="uid://dw2o73nd2m4g6"
 path="res://.godot/imported/Amorphous.ttf-c0f31eccadc4edf11ac6e4042aed9f57.fontdata"
 
 [deps]
@@ -13,22 +13,28 @@ dest_files=["res://.godot/imported/Amorphous.ttf-c0f31eccadc4edf11ac6e4042aed9f5
 [params]
 
 Rendering=null
-antialiasing=1
-generate_mipmaps=false
-disable_embedded_bitmaps=true
+antialiasing=2
+generate_mipmaps=true
+disable_embedded_bitmaps=false
 multichannel_signed_distance_field=false
-msdf_pixel_range=8
-msdf_size=48
+msdf_pixel_range=100
+msdf_size=250
 allow_system_fallback=true
 force_autohinter=false
-hinting=1
-subpixel_positioning=1
-oversampling=0.0
+hinting=2
+subpixel_positioning=3
+oversampling=10.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0
+}]
 language_support={}
 script_support={}
 opentype_features={}

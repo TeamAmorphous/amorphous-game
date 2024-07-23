@@ -1,15 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1cnuod74sjhg"]
+[gd_scene load_steps=9 format=3 uid="uid://b1cnuod74sjhg"]
 
 [ext_resource type="Script" path="res://scripts/levelcontroller.gd" id="1_j12xh"]
 [ext_resource type="PackedScene" uid="uid://dq2m7521idopv" path="res://scenes/Skuldoo.tscn" id="2_cmamx"]
 [ext_resource type="PackedScene" uid="uid://bfpqjsydtgif4" path="res://scenes/Flam.tscn" id="3_1tavr"]
 [ext_resource type="Script" path="res://scripts/level_controller.gd" id="4_8ckbe"]
+[ext_resource type="PackedScene" uid="uid://w1y52yirx6lp" path="res://scenes/tree.tscn" id="5_8qvn5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhrom"]
-albedo_color = Color(0.848911, 0.812981, 0.39562, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pb4dp"]
+albedo_color = Color(0.647408, 0.624239, 0.303153, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ec2bf"]
-material = SubResource("StandardMaterial3D_fhrom")
+[sub_resource type="PlaneMesh" id="PlaneMesh_w4r5f"]
+material = SubResource("StandardMaterial3D_pb4dp")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_smhu1"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
@@ -17,14 +18,35 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_j12xh")
 
+[node name="LevelController" type="Node" parent="."]
+script = ExtResource("4_8ckbe")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 393.0
+offset_top = 40.0
+offset_right = 1544.0
+offset_bottom = 385.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+offset_right = 1151.0
+offset_bottom = 345.0
+text = "jkzfjsdkjf sdjkfasdjfaks aksjdf askdjf ajs dfasd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Skuldoo" parent="." instance=ExtResource("2_cmamx")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.85469, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Skuldoo"]
-transform = Transform3D(-4.37114e-08, -0.189095, 0.981959, 0, 0.981959, 0.189095, -1, 8.26562e-09, -4.29228e-08, 15.8007, 3.98217, 3.27455e-07)
+transform = Transform3D(-4.37114e-08, -0.189095, 0.981959, 0, 0.981959, 0.189095, -1, 8.26561e-09, -4.29228e-08, 15.8007, 3.98217, 0.0732044)
 current = true
 fov = 20.0
 size = 0.045
+near = 15.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.554844, 0.831954, 0, -0.831954, 0.554844, 0, 5, 0)
@@ -35,17 +57,80 @@ light_angular_distance = 20.0
 [node name="Flam" parent="." instance=ExtResource("3_1tavr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02043, 0.660185, -3.72405)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(14.9243, 0, 0, 0, 1, 0, 0, 0, 14.7191, 0, -0.525857, 0)
-mesh = SubResource("BoxMesh_ec2bf")
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(121.245, 0, 0, 0, 1, 0, 0, 0, 162.773, 0, -0.525857, 0)
+mesh = SubResource("PlaneMesh_w4r5f")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_smhu1")
 
-[node name="LevelController" type="Node" parent="."]
-script = ExtResource("4_8ckbe")
+[node name="Trees" type="Node3D" parent="."]
 
-[connection signal="LC_InitDiag" from="Flam" to="LevelController" method="_on_flam_lc_init_diag"]
+[node name="Node3D" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.15517)
+
+[node name="Node3D2" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.84288, 0, -3.04765)
+
+[node name="Node3D3" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0802, 0, -7.12174)
+
+[node name="Node3D4" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65625, 0, -7.47773)
+
+[node name="Node3D5" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2222, 0, -9.02034)
+
+[node name="Node3D6" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.37937, 0, -15.0326)
+
+[node name="Node3D7" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.32255, 0, -10.8003)
+
+[node name="Node3D8" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.76989, 0, -0.832619)
+
+[node name="Node3D9" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0529, 0, -10.9189)
+
+[node name="Node3D10" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.15017, 9.53674e-07, 2.41217)
+
+[node name="Node3D11" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3665, -9.53674e-07, -2.7419)
+
+[node name="Node3D12" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39664, 0, 1.93618)
+
+[node name="Node3D13" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2551, 0, -6.56626)
+
+[node name="Node3D14" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0318, 0, -15.5763)
+
+[node name="Node3D15" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8189, 0, -14.9906)
+
+[node name="Node3D16" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.61407, 0, -16.3816)
+
+[node name="Node3D17" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6492, 0, -12.6478)
+
+[node name="Node3D18" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9619, 0, 3.16604)
+
+[node name="Node3D19" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8121, 0, 11.2926)
+
+[node name="Node3D20" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3229, 0, 3.31246)
+
+[node name="Node3D21" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3229, 0, -8.10863)
+
+[node name="Node3D22" parent="Trees" instance=ExtResource("5_8qvn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2514, 0, 2.87319)

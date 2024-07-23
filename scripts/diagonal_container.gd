@@ -6,6 +6,6 @@ extends Control
 
 func _ready():
     for i in range(get_child_count()):
-        var panel = get_child(i)
-        if panel is PanelContainer:
-            panel.position = start_position + offset * i
+        var button = get_child(i)
+        if button is Button:
+            button.position = start_position + offset * i

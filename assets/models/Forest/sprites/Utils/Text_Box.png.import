@@ -2,26 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj0akol0ehxlm"
-path="res://.godot/imported/Arrow.png-bee3699cceab4925d0ea3988198eb030.ctex"
+uid="uid://c2epo6kddxxbd"
+path.s3tc="res://.godot/imported/Text_Box.png-30640e5b72aeaaa0e73900cc7ae3f168.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/sprites/Utils/Arrow.png"
-dest_files=["res://.godot/imported/Arrow.png-bee3699cceab4925d0ea3988198eb030.ctex"]
+source_file="res://assets/models/Forest/sprites/Utils/Text_Box.png"
+dest_files=["res://.godot/imported/Text_Box.png-30640e5b72aeaaa0e73900cc7ae3f168.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

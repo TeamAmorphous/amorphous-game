@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b08g11aavdvka"
-path.s3tc="res://.godot/imported/Skuldoo.png-151c07cff2b2e428c64f218a859b42fc.s3tc.ctex"
+uid="uid://byu4ep3bg111m"
+path.s3tc="res://.godot/imported/1.png-9a7f766cc5ec424f90886ba21188fed9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/sprites/Skuldoo.png"
-dest_files=["res://.godot/imported/Skuldoo.png-151c07cff2b2e428c64f218a859b42fc.s3tc.ctex"]
+source_file="res://assets/sprites/speech_bubble_animation/1.png"
+dest_files=["res://.godot/imported/1.png-9a7f766cc5ec424f90886ba21188fed9.s3tc.ctex"]
 
 [params]
 

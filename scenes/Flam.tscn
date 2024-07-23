@@ -1,13 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfpqjsydtgif4"]
+[gd_scene load_steps=8 format=3 uid="uid://bfpqjsydtgif4"]
 
 [ext_resource type="Script" path="res://scripts/NPC.gd" id="1_lfxu2"]
-[ext_resource type="Texture2D" uid="uid://dca6utkrx53w1" path="res://assets/sprites/NPCs/Flam_NPC.png" id="1_osh34"]
-[ext_resource type="Texture2D" uid="uid://48yt5l2trvmm" path="res://assets/sprites/Utils/Interaction_Bubble.png" id="2_yym5u"]
+[ext_resource type="Texture2D" uid="uid://dca6utkrx53w1" path="res://assets/models/Forest/sprites/NPCs/Flam_NPC.png" id="1_osh34"]
+[ext_resource type="Texture2D" uid="uid://byu4ep3bg111m" path="res://assets/sprites/speech_bubble_animation/1.png" id="3_frjsx"]
+[ext_resource type="Texture2D" uid="uid://c715msa7uibpi" path="res://assets/sprites/speech_bubble_animation/2.png" id="4_dhc66"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_5ayyx"]
+frames = 2
+frame_0/texture = ExtResource("3_frjsx")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("4_dhc66")
+frame_1/duration = 0.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0bc1t"]
 margin = 0.4
 radius = 0.598797
-height = 1.50003
+height = 4.16074
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jrv7h"]
 radius = 1.86423
@@ -22,10 +30,11 @@ alpha_cut = 2
 texture = ExtResource("1_osh34")
 
 [node name="SpeechBubble" type="Sprite3D" parent="Sprite3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 7, -3)
+transform = Transform3D(1.55221, 0, 0, 0, 1.55221, 0, 0, 0, 2, -6, 8.24462, -0.460969)
+visible = false
 billboard = 1
 alpha_cut = 2
-texture = ExtResource("2_yym5u")
+texture = SubResource("AnimatedTexture_5ayyx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0185671, -0.005, 0)

@@ -5,6 +5,8 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 @onready var skuldoo_sprite: SpriteBase3D = $Sprite3D
+@export var in_dialogue := false
+
 
 func _physics_process(delta: float) -> void:
   # Add the gravity.
@@ -21,10 +23,11 @@ func _physics_process(delta: float) -> void:
   var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
   #Check and validate sprite orientation with the current direction
-  if direction.x < 0:
-    skuldoo_sprite.flip_h = false
-  elif direction.x > 0:
-    skuldoo_sprite.flip_h = true
+  if not in_dialogue:
+    if direction.x < 0:
+      skuldoo_sprite.flip_h = false
+    elif direction.x > 0:
+      skuldoo_sprite.flip_h = true
 
   if direction:
     velocity.x = direction.x * SPEED
@@ -33,4 +36,5 @@ func _physics_process(delta: float) -> void:
     velocity.x = move_toward(velocity.x, 0, SPEED)
     velocity.z = move_toward(velocity.z, 0, SPEED)
 
-  move_and_slide()
+  if not in_dialogue:
+    move_and_slide()
