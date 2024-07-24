@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1cnuod74sjhg"]
+[gd_scene load_steps=8 format=3 uid="uid://b1cnuod74sjhg"]
 
-[ext_resource type="Script" path="res://scripts/levelcontroller.gd" id="1_j12xh"]
 [ext_resource type="PackedScene" uid="uid://dq2m7521idopv" path="res://scenes/Skuldoo.tscn" id="2_cmamx"]
 [ext_resource type="PackedScene" uid="uid://bfpqjsydtgif4" path="res://scenes/Flam.tscn" id="3_1tavr"]
 [ext_resource type="Script" path="res://scripts/level_controller.gd" id="4_8ckbe"]
@@ -16,7 +15,6 @@ material = SubResource("StandardMaterial3D_pb4dp")
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_j12xh")
 
 [node name="LevelController" type="Node" parent="."]
 script = ExtResource("4_8ckbe")
@@ -134,3 +132,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3229, 0, -8.10863)
 
 [node name="Node3D22" parent="Trees" instance=ExtResource("5_8qvn5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2514, 0, 2.87319)
+
+[connection signal="lc_dialogue_concluded" from="LevelController" to="Flam" method="_on_level_controller_lc_dialogue_concluded"]
+[connection signal="lc_dialogue_initialized" from="Flam" to="LevelController" method="_on_flam_lc_dialogue_initialized"]
