@@ -1,6 +1,13 @@
 extends Node
 
-# Future docstring tool?
+## The base level controller script.
+
+## This will serve as a template for any of the levels in the story. The goal
+## of this template will allow us to enable multiple nodes within a level to
+## communicate with one another while giving us the granular control of what
+## events to trigger during gameplay.
+##
+## @tutorial: https://www.gdquest.com/tutorial/godot/design-patterns/mediator/
 
 signal lc_dialogue_concluded()
 

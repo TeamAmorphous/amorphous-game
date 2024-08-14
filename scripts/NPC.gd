@@ -50,4 +50,3 @@ func _on_level_controller_lc_dialogue_concluded() -> void:
   await get_tree().create_timer(.1).timeout
   player_interactable = true
   speech_sprite.visible = true
-

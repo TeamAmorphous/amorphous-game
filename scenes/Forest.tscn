@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1cnuod74sjhg"]
+[gd_scene load_steps=9 format=3 uid="uid://b1cnuod74sjhg"]
 
 [ext_resource type="PackedScene" uid="uid://dq2m7521idopv" path="res://scenes/Skuldoo.tscn" id="2_cmamx"]
 [ext_resource type="PackedScene" uid="uid://bfpqjsydtgif4" path="res://scenes/Flam.tscn" id="3_1tavr"]
 [ext_resource type="Script" path="res://scripts/level_controller.gd" id="4_8ckbe"]
 [ext_resource type="PackedScene" uid="uid://w1y52yirx6lp" path="res://scenes/tree.tscn" id="5_8qvn5"]
+[ext_resource type="PackedScene" uid="uid://qswd3oyuxwsy" path="res://scenes/cog.tscn" id="5_vopub"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pb4dp"]
 albedo_color = Color(0.647408, 0.624239, 0.303153, 1)
@@ -132,6 +133,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3229, 0, -8.10863)
 
 [node name="Node3D22" parent="Trees" instance=ExtResource("5_8qvn5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2514, 0, 2.87319)
+
+[node name="Node3D" parent="." instance=ExtResource("5_vopub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09386, 0.49188, -3.60587)
 
 [connection signal="lc_dialogue_concluded" from="LevelController" to="Flam" method="_on_level_controller_lc_dialogue_concluded"]
 [connection signal="lc_dialogue_initialized" from="Flam" to="LevelController" method="_on_flam_lc_dialogue_initialized"]

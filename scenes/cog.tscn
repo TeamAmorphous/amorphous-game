@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://qswd3oyuxwsy"]
+
+[ext_resource type="Texture2D" uid="uid://bhocv5h17q4x3" path="res://assets/sprites/gear_rig.png" id="1_l224t"]
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_md40m"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jrv7h"]
+radius = 1.0309
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_md40m")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
+billboard = 1
+alpha_cut = 2
+texture = ExtResource("1_l224t")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_jrv7h")
+
+[connection signal="cog_battle_scene_called" from="." to="." method="_on_cog_battle_scene_called"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
