@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq0m8ppfjc3qu"]
+
+[ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/AmorphousTheme.tres" id="1_l2460"]
+[ext_resource type="Script" path="res://scripts/UI/number_indicator.gd" id="2_vxqi0"]
+
+[node name="number_indicator" type="Control"]
+layout_mode = 3
+anchor_right = 0.166
+anchor_bottom = 0.1
+offset_right = -318.72
+offset_bottom = -108.0
+theme = ExtResource("1_l2460")
+script = ExtResource("2_vxqi0")
+numerator = "11"
+denominator = "112"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_right = 265.0
+offset_bottom = 108.0
+
+[node name="Polygon2D" type="Polygon2D" parent="Panel"]
+position = Vector2(-16, 39)
+rotation = -1.5708
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-14, -22, -30, 0.999996, 7, 38)
+
+[node name="number1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 11.0
+offset_right = 270.0
+offset_bottom = 50.0
+mouse_filter = 2
+text = "11"
+
+[node name="number2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 57.0
+offset_right = 224.0
+offset_bottom = 96.0
+mouse_filter = 2
+text = "112"

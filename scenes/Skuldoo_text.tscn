@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://0vgfp16c5jm4"]
+
+[ext_resource type="Script" path="res://scripts/skuldoo.gd" id="1_q8cv1"]
+[ext_resource type="Shader" path="res://scenes/Skuldoo_text.gdshader" id="2_w641c"]
+[ext_resource type="Texture2D" uid="uid://bqvcfd024hirk" path="res://assets/sprites/Skuldoo_green.png" id="3_j0xvg"]
+[ext_resource type="Texture2D" uid="uid://bn5ld07rhyn08" path="res://assets/sprites/green_part.png" id="4_td0sr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7vf16"]
+shader = ExtResource("2_w641c")
+
+[sub_resource type="Gradient" id="Gradient_7urvi"]
+colors = PackedColorArray(0.1314, 0.181283, 0.73, 1, 1, 0.17, 0.17, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a8ocd"]
+gradient = SubResource("Gradient_7urvi")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0bc1t"]
+margin = 0.4
+radius = 0.598797
+height = 2.13938
+
+[node name="Skuldoo" type="CharacterBody3D"]
+script = ExtResource("1_q8cv1")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite3D" type="Sprite3D" parent="Control"]
+transform = Transform3D(0.103765, 0, 0, 0, 0.103765, 0, 0, 0, 0.103765, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_7vf16")
+flip_h = true
+billboard = 1
+alpha_cut = 2
+texture = ExtResource("3_j0xvg")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Control"]
+copy_mode = 2
+
+[node name="GreenPart" type="Sprite2D" parent="Control/BackBufferCopy"]
+position = Vector2(1003, 451)
+texture = ExtResource("4_td0sr")
+
+[node name="TextureRect" type="TextureRect" parent="Control/BackBufferCopy"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 10.112
+anchor_bottom = 5.857
+offset_left = -95.0
+offset_top = -92.0
+offset_right = -134.4
+offset_bottom = -103.4
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_a8ocd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+shape = SubResource("CapsuleShape3D_0bc1t")

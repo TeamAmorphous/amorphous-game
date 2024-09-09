@@ -11,4 +11,3 @@ func _on_load_game_pressed() -> void:
 
 func _on_quit_pressed() -> void:
   get_tree().quit()
-

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://tdd03p6q1wie"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://tdd03p6q1wie"]
 
 [ext_resource type="FontVariation" uid="uid://cj2spsns10vod" path="res://assets/BoldFont.tres" id="1_r6rk8"]
 [ext_resource type="FontFile" uid="uid://dw2o73nd2m4g6" path="res://assets/Amorphous.ttf" id="2_g0rxh"]
@@ -88,6 +88,11 @@ shadow_size = 5
 anti_aliasing = false
 anti_aliasing_size = 0.01
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jh0ux"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(1, 0)
+anti_aliasing = false
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ng8x8"]
 bg_color = Color(0, 0, 0, 0.698039)
 skew = Vector2(1, 0)
@@ -96,6 +101,21 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0, 0, 0, 0.698039)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbseo"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.188235, 0.270588, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30y4g"]
+bg_color = Color(1, 0.188235, 0.270588, 1)
+skew = Vector2(1, 0)
 anti_aliasing = false
 
 [resource]
@@ -122,4 +142,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_apf27")
 Button/styles/normal = SubResource("StyleBoxFlat_h2do2")
 Button/styles/pressed = SubResource("StyleBoxFlat_ugrge")
 Label/fonts/font = ExtResource("1_r6rk8")
+Panel/styles/panel = SubResource("StyleBoxFlat_jh0ux")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ng8x8")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_tbseo")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_30y4g")
