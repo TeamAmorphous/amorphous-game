@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://sfl4hwy4ge"]
+
+[ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/AmorphousTheme.tres" id="1_yvl85"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgj56"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1tjmc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.188235, 0.270588, 1)
+anti_aliasing = false
+
+[node name="health_bar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_yvl85")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 50.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pgj56")
+
+[node name="Button" type="Button" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_1tjmc")
+text = "X"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_left = 92.0
+offset_right = 231.0
+offset_bottom = 55.0
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_top = -19.5
+offset_right = 54.5
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Switch!"
+
+[node name="Polygon2D" type="Polygon2D" parent="Panel/Button"]
+position = Vector2(-30, 15.5)
+rotation = -1.5708
+scale = Vector2(1, 1.25)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-0.49996, -8.8, -9.50004, 7.99997, 7.4999, 21.6)
