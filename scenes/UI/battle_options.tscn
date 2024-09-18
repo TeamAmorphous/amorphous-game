@@ -1,134 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://crse4l32pa36e"]
+[gd_scene load_steps=3 format=3 uid="uid://crse4l32pa36e"]
 
 [ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/AmorphousTheme.tres" id="1_eym7g"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwnvg"]
-bg_color = Color(0, 0, 0, 1)
-skew = Vector2(1, 0)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 0.188235, 0.270588, 1)
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hblca"]
-bg_color = Color(1, 0.188235, 0.270588, 1)
-skew = Vector2(1, 0)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 0.188235, 0.270588, 1)
-anti_aliasing = false
+[ext_resource type="PackedScene" uid="uid://dglcegn4md7fa" path="res://scenes/UI/ui_button.tscn" id="2_op7i1"]
 
 [node name="battle_options" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_eym7g")
 
-[node name="Items" type="Panel" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 180.0
+theme_override_constants/h_separation = 150
+theme_override_constants/v_separation = 75
+columns = 3
+
+[node name="Control" parent="GridContainer" instance=ExtResource("2_op7i1")]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-offset_left = 222.0
-offset_top = 36.0
-offset_right = 402.0
-offset_bottom = 91.0
-grow_horizontal = 2
-grow_vertical = 2
+mouse_filter = 2
 
-[node name="Button" type="Button" parent="Items"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = -19.5
-offset_right = 45.0
-offset_bottom = 19.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Items"
+[node name="Items" parent="GridContainer" instance=ExtResource("2_op7i1")]
+layout_mode = 2
+text_content = "Items"
 
-[node name="Attacks" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 386.0
-offset_top = 94.0
-offset_right = 566.0
-offset_bottom = 157.0
+[node name="Control3" parent="GridContainer" instance=ExtResource("2_op7i1")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
 
-[node name="Button" type="Button" parent="Attacks"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -79.0
-offset_top = -15.5
-offset_right = 71.0
-offset_bottom = 23.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Attacks"
+[node name="Flee" parent="GridContainer" instance=ExtResource("2_op7i1")]
+layout_mode = 2
+text_content = "Flee"
 
-[node name="ProgressBar" type="ProgressBar" parent="Attacks"]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 2.0
-offset_right = 200.0
-offset_bottom = 11.0
-theme_override_styles/background = SubResource("StyleBoxFlat_iwnvg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_hblca")
-step = 1.0
-value = 35.0
-show_percentage = false
+[node name="Control5" parent="GridContainer" instance=ExtResource("2_op7i1")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
 
-[node name="Gear" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 211.0
-offset_top = 179.0
-offset_right = 391.0
-offset_bottom = 234.0
+[node name="Attacks" parent="GridContainer" instance=ExtResource("2_op7i1")]
+layout_mode = 2
+text_content = "Attacks"
 
-[node name="Button" type="Button" parent="Gear"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = -19.5
-offset_right = 45.0
-offset_bottom = 19.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Gear"
+[node name="Control7" parent="GridContainer" instance=ExtResource("2_op7i1")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
 
-[node name="Flee" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 108.0
-offset_right = 230.0
-offset_bottom = 163.0
+[node name="Gear" parent="GridContainer" instance=ExtResource("2_op7i1")]
+layout_mode = 2
+text_content = "Gear"
 
-[node name="Button" type="Button" parent="Flee"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -19.5
-offset_right = 75.0
-offset_bottom = 19.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Flee"
+[node name="Control9" parent="GridContainer" instance=ExtResource("2_op7i1")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2

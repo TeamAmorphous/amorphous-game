@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqq6n575pwceb"]
+
+[ext_resource type="Script" path="res://scripts/UI/wheel_selector/ui_wheel.gd" id="1_xxf4f"]
+[ext_resource type="Script" path="res://scripts/UI/wheel_selector/wheel_option.gd" id="2_sbrvh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_45kuq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrxk2"]
+atlas = SubResource("NoiseTexture2D_45kuq")
+script = ExtResource("2_sbrvh")
+name = ""
+
+[node name="ui_wheel" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -4.0
+offset_right = 1.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xxf4f")
+background_color = Color(0.564337, 0.566265, 0.557494, 1)
+options = Array[ExtResource("2_sbrvh")]([SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2")])

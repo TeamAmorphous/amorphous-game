@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/NPC.gd" id="1_lfxu2"]
 [ext_resource type="Texture2D" uid="uid://dca6utkrx53w1" path="res://assets/models/Forest/sprites/NPCs/Flam_NPC.png" id="1_osh34"]
-[ext_resource type="Texture2D" uid="uid://byu4ep3bg111m" path="res://assets/sprites/speech_bubble_animation/1.png" id="3_frjsx"]
-[ext_resource type="Texture2D" uid="uid://c715msa7uibpi" path="res://assets/sprites/speech_bubble_animation/2.png" id="4_dhc66"]
+[ext_resource type="Texture2D" uid="uid://byu4ep3bg111m" path="res://assets/sprites/UI/speech_bubble_animation/1.png" id="3_frjsx"]
+[ext_resource type="Texture2D" uid="uid://c715msa7uibpi" path="res://assets/sprites/UI/speech_bubble_animation/2.png" id="4_dhc66"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_5ayyx"]
 frames = 2

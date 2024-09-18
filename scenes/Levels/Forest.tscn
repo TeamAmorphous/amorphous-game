@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://b1cnuod74sjhg"]
 
-[ext_resource type="PackedScene" uid="uid://dq2m7521idopv" path="res://scenes/Skuldoo.tscn" id="2_cmamx"]
-[ext_resource type="PackedScene" uid="uid://bfpqjsydtgif4" path="res://scenes/Flam.tscn" id="3_1tavr"]
+[ext_resource type="PackedScene" uid="uid://dq2m7521idopv" path="res://scenes/Characters/Skuldoo.tscn" id="2_cmamx"]
+[ext_resource type="PackedScene" uid="uid://bfpqjsydtgif4" path="res://scenes/Characters/Flam.tscn" id="3_1tavr"]
 [ext_resource type="Script" path="res://scripts/level_controller.gd" id="4_8ckbe"]
-[ext_resource type="PackedScene" uid="uid://w1y52yirx6lp" path="res://scenes/tree.tscn" id="5_8qvn5"]
-[ext_resource type="PackedScene" uid="uid://qswd3oyuxwsy" path="res://scenes/cog.tscn" id="5_vopub"]
+[ext_resource type="PackedScene" uid="uid://w1y52yirx6lp" path="res://scenes/Props/tree.tscn" id="5_8qvn5"]
+[ext_resource type="PackedScene" uid="uid://qswd3oyuxwsy" path="res://scenes/Characters/cog.tscn" id="5_vopub"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pb4dp"]
 albedo_color = Color(0.647408, 0.624239, 0.303153, 1)

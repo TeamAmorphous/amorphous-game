@@ -9,8 +9,7 @@ theme = ExtResource("1_xqk0t")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-offset_left = 56.0
-offset_right = 286.0
+offset_right = 230.0
 offset_bottom = 40.0
 
 [node name="ProgressBar" type="ProgressBar" parent="Panel"]

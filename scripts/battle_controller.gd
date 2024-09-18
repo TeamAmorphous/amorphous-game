@@ -30,15 +30,15 @@ enum BattleInit {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	match GlobalVariables.current_battle_init:
-		BattleInit.ENEMY:
-			print_debug("enemy start")
-		BattleInit.NEUTRAL:
-			print_debug("neutral start")
-		BattleInit.PLAYER:
-			print_debug("player start")
-	bc_battle_started.emit(GlobalVariables.current_battle_init)
+  match GlobalVariables.current_battle_init:
+    BattleInit.ENEMY:
+      print_debug("enemy start")
+    BattleInit.NEUTRAL:
+      print_debug("neutral start")
+    BattleInit.PLAYER:
+      print_debug("player start")
+  bc_battle_started.emit(GlobalVariables.current_battle_init)
   
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+  pass

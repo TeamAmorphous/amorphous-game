@@ -6,11 +6,11 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$number1.text = numerator
-	$number2.text = denominator
+  $HBoxContainer/PanelContainer/MarginContainer/GridContainer/high.text = numerator
+  $HBoxContainer/PanelContainer/MarginContainer/GridContainer/low.text = denominator
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$number1.text = numerator
-	$number2.text = denominator
+  $HBoxContainer/PanelContainer/MarginContainer/GridContainer/high.text = numerator
+  $HBoxContainer/PanelContainer/MarginContainer/GridContainer/low.text = denominator
