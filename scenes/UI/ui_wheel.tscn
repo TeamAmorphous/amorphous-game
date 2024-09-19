@@ -4,6 +4,8 @@
 [ext_resource type="Script" path="res://scripts/UI/wheel_selector/wheel_option.gd" id="2_sbrvh"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_45kuq"]
+width = 32
+height = 32
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vrxk2"]
 atlas = SubResource("NoiseTexture2D_45kuq")
@@ -25,4 +27,4 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xxf4f")
 background_color = Color(0.564337, 0.566265, 0.557494, 1)
-options = Array[ExtResource("2_sbrvh")]([SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2")])
+options = Array[ExtResource("2_sbrvh")]([SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2")])
