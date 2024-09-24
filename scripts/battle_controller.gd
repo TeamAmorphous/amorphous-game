@@ -1,3 +1,4 @@
+class_name BattleController
 extends Node
 
 ## The base battle controller script.
@@ -21,37 +22,42 @@ extends Node
 ##
 ## Consider as well that when an attack happens (either from the player or an 
 ## enemy). There is a two-step process, a signal to initiate the attack event
-## ("bc_player/enemy_attacked"), and a signal to signify the end of the minigame
+## ("bc_player/enemy_acted"), and a signal to signify the end of the minigame
 ## ("bc_player/enemy_minigame_ended"). This will send back the results of the 
 ## minigame in terms of damage done and rating bar fill.
 ##
-## NOTE: In case we need to generate new signals within the battle controller,
-## keep the naming of them as "bc_(entity)_(action)"
-##
-## TODO: Define how to handle the fixed attack timer for enemies (Signal?)
-## TODO: Status effect system
 ##
 ## @tutorial: https://www.gdquest.com/tutorial/godot/design-patterns/mediator/
+
+# NOTE: In case we need to generate new signals within the battle controller,
+# keep the naming of them as "bc_(entity)_(action)"
+#
+# TODO: Define how to handle the fixed attack timer for enemies (Signal?)
+# TODO: Status effect system
+# TODO: Do we need to bring in the scene that invoked the battle to do a proper
+# 	callback?
+# TODO: Evaluate and list eventually all callbacks after a minigame event 
+# concludes.
+# TODO: Add fixed time interval to enemy attacks.
 
 signal bc_scene_battle_started(init: int)
 signal bc_scene_ui_presented()
 signal bc_scene_won(exp: int)
 signal bc_scene_lost()
-signal bc_concluded()
+signal bc_scene_concluded()
 
-# NOTE: Player action? or attack? Check naming later.
+# NOTE: Player action? or move? Check naming later.
 signal bc_player_gear_switched()
 signal bc_player_item_used()
 signal bc_player_char_switched()
 signal bc_player_fled()
-signal bc_player_attacked()
+# TODO: Some actions will not necessarily involve a minigame (ie: Healing spell)
+# it might be a better idea to have an inventory of all actions to reference
+# from a file, load them as needed and have the code play out accordingly 
+# (mainly if there is the need for a minigame or not).
+signal bc_player_acted()
 
-signal bc_player_minigame_ended(rating: int)
-
-# TODO: Create a minigame class, or find a way to make templates for the 
-# different battle minigames in the game code.
-signal bc_enemy_attacked()
-signal bc_enemy_minigame_ended(rating: float)
+signal bc_enemy_acted()
 
 
 enum BattleInit {

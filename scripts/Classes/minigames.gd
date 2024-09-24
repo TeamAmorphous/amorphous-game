@@ -1,4 +1,14 @@
+class_name Minigame
 extends Node
+
+## TODO: Class Documentation
+
+signal minigame_started()
+signal minigame_finished()
+
+var attacker : Node3D
+var target : Node3D
+var _ui_node : Control
 
 
 # Called when the node enters the scene tree for the first time.
