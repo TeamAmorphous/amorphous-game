@@ -1,0 +1,57 @@
+[skuldoo]
+curr_hp = 75
+max_hp = 100
+curr_mp = 10
+max_mp = 24
+curr_pp = 5
+max_pp = 15
+defense = 10
+speed = 20
+luck = 22
+curr_exp = 23
+lvl = 2
+gold_coins = 1000
+active_companion = 'emmet'
+actions = [
+  'Hammer Smash',
+  'Lamp swing',
+  'Barrel roll',
+  'Exploding lamp',
+]
+equipped = [
+  'helmet',
+  'fire_ring'
+]
+
+[emmet]
+curr_hp = 75
+max_hp = 100
+curr_mp = 10
+max_mp = 24
+curr_pp = 5
+max_pp = 15
+defense = 10
+speed = 20
+luck = 22
+curr_exp = 23
+lvl = 2
+actions = [
+  'Haymaker',
+  'Suplex',
+  'Stomp',
+  'Dropkick',
+]
+equipped = [
+  'helmet',
+  'fire_ring'
+]
+
+[gear]
+helmet = 1
+detective_jacket = 1
+fire_ring = 2
+
+[items]
+health_potion = 3
+bomb = 2
+ether = 3
