@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://crse4l32pa36e"]
 
-[ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/AmorphousTheme.tres" id="1_eym7g"]
+[ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/others/AmorphousTheme.tres" id="1_eym7g"]
 [ext_resource type="PackedScene" uid="uid://dglcegn4md7fa" path="res://scenes/UI/ui_button.tscn" id="2_op7i1"]
 
 [node name="battle_options" type="Control"]

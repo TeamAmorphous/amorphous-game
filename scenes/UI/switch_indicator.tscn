@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://sfl4hwy4ge"]
 
-[ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/AmorphousTheme.tres" id="1_yvl85"]
+[ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/others/AmorphousTheme.tres" id="1_yvl85"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgj56"]
 bg_color = Color(0, 0, 0, 1)

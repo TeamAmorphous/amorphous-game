@@ -32,8 +32,8 @@ import/blender/enabled=false
 
 [gui]
 
-theme/custom="res://assets/AmorphousTheme.tres"
-theme/custom_font="res://assets/BoldFont.tres"
+theme/custom="res://assets/others/AmorphousTheme.tres"
+theme/custom_font="res://assets/others/BoldFont.tres"
 theme/default_font_hinting=2
 
 [input]

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dw2o73nd2m4g6"
-path="res://.godot/imported/Amorphous.ttf-c0f31eccadc4edf11ac6e4042aed9f57.fontdata"
+path="res://.godot/imported/Amorphous.ttf-5192b9823ddda79031ffa279019a0fd6.fontdata"
 
 [deps]
 
-source_file="res://assets/Amorphous.ttf"
-dest_files=["res://.godot/imported/Amorphous.ttf-c0f31eccadc4edf11ac6e4042aed9f57.fontdata"]
+source_file="res://assets/others/Amorphous.ttf"
+dest_files=["res://.godot/imported/Amorphous.ttf-5192b9823ddda79031ffa279019a0fd6.fontdata"]
 
 [params]
 

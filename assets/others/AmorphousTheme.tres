@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=12 format=3 uid="uid://tdd03p6q1wie"]
 
-[ext_resource type="FontVariation" uid="uid://cj2spsns10vod" path="res://assets/BoldFont.tres" id="1_r6rk8"]
-[ext_resource type="FontFile" uid="uid://dw2o73nd2m4g6" path="res://assets/Amorphous.ttf" id="2_g0rxh"]
+[ext_resource type="FontVariation" uid="uid://cj2spsns10vod" path="res://assets/others/BoldFont.tres" id="1_r6rk8"]
+[ext_resource type="FontFile" uid="uid://dw2o73nd2m4g6" path="res://assets/others/Amorphous.ttf" id="2_g0rxh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40el6"]
 content_margin_left = 7.0

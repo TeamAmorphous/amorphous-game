@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bneddqsrus7uf"]
 
-[ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/AmorphousTheme.tres" id="1_d0vmv"]
+[ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/others/AmorphousTheme.tres" id="1_d0vmv"]
 
 [node name="health_bar" type="Control"]
 layout_mode = 3

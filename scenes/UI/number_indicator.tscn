@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cq0m8ppfjc3qu"]
 
-[ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/AmorphousTheme.tres" id="1_l2460"]
+[ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/others/AmorphousTheme.tres" id="1_l2460"]
 [ext_resource type="Script" path="res://scripts/UI/number_indicator.gd" id="2_vxqi0"]
 
 [node name="number_indicator" type="Control"]

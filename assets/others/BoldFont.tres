@@ -1,6 +1,6 @@
 [gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cj2spsns10vod"]
 
-[ext_resource type="FontFile" uid="uid://dw2o73nd2m4g6" path="res://assets/Amorphous.ttf" id="1_jcly8"]
+[ext_resource type="FontFile" uid="uid://dw2o73nd2m4g6" path="res://assets/others/Amorphous.ttf" id="1_jcly8"]
 
 [resource]
 base_font = ExtResource("1_jcly8")

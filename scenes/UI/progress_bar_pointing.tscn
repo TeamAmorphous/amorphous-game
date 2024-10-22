@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5ciwftpbrg00"]
 
-[ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/AmorphousTheme.tres" id="1_xqk0t"]
+[ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/others/AmorphousTheme.tres" id="1_xqk0t"]
 
 [node name="progress_bar_pointing" type="Control"]
 layout_mode = 3
