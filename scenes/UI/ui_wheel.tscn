@@ -2,13 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/UI/wheel_selector/ui_wheel.gd" id="1_xxf4f"]
 [ext_resource type="Script" path="res://scripts/UI/wheel_selector/wheel_option.gd" id="2_sbrvh"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_45kuq"]
-width = 32
-height = 32
+[ext_resource type="Texture2D" uid="uid://b0dfrwrf0c656" path="res://assets/sprites/Apple.png" id="3_0q0db"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vrxk2"]
-atlas = SubResource("NoiseTexture2D_45kuq")
+atlas = ExtResource("3_0q0db")
 script = ExtResource("2_sbrvh")
 name = ""
 
@@ -26,5 +23,11 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xxf4f")
-background_color = Color(0.564337, 0.566265, 0.557494, 1)
-options = Array[ExtResource("2_sbrvh")]([SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2")])
+background_color = Color(0, 0, 0, 0.666667)
+hightlight_color = Color(1, 0, 0, 0.392157)
+selection_outline_color = Color(1, 0.5023, 0.43551, 1)
+outer_radius = 266
+inner_radius = 84
+panel_offset = 15
+highlighted_line_width = 10
+options = Array[ExtResource("2_sbrvh")]([SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2"), SubResource("AtlasTexture_vrxk2")])

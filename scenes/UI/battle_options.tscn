@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://crse4l32pa36e"]
+[gd_scene load_steps=4 format=3 uid="uid://crse4l32pa36e"]
 
 [ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/others/AmorphousTheme.tres" id="1_eym7g"]
+[ext_resource type="Script" path="res://scripts/UI/battle_options.gd" id="2_hm1dv"]
 [ext_resource type="PackedScene" uid="uid://dglcegn4md7fa" path="res://scenes/UI/ui_button.tscn" id="2_op7i1"]
 
 [node name="battle_options" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_eym7g")
+script = ExtResource("2_hm1dv")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
@@ -56,3 +58,8 @@ text_content = "Gear"
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 mouse_filter = 2
+
+[connection signal="pressed" from="GridContainer/Items" to="." method="_on_items_pressed"]
+[connection signal="pressed" from="GridContainer/Flee" to="." method="_on_flee_pressed"]
+[connection signal="pressed" from="GridContainer/Attacks" to="." method="_on_attacks_pressed"]
+[connection signal="pressed" from="GridContainer/Gear" to="." method="_on_gear_pressed"]

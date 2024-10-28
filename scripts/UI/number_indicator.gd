@@ -1,4 +1,5 @@
 @tool
+
 extends Control
 
 @export var numerator : String
@@ -14,3 +15,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
   $HBoxContainer/PanelContainer/MarginContainer/GridContainer/high.text = numerator
   $HBoxContainer/PanelContainer/MarginContainer/GridContainer/low.text = denominator
+

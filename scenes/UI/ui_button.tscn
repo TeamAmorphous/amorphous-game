@@ -26,3 +26,5 @@ theme_override_constants/margin_bottom = 5
 
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bhocv5h17q4x3" path="res://assets/sprites/gear_rig.png" id="3_b5ygg"]
 [ext_resource type="PackedScene" uid="uid://b5ciwftpbrg00" path="res://scenes/UI/progress_bar_pointing.tscn" id="3_tqlil"]
 [ext_resource type="PackedScene" uid="uid://cq0m8ppfjc3qu" path="res://scenes/UI/number_indicator.tscn" id="4_qmlvg"]
-[ext_resource type="PackedScene" uid="uid://bneddqsrus7uf" path="res://scenes/UI/health_bar.tscn" id="4_setym"]
 [ext_resource type="PackedScene" uid="uid://sfl4hwy4ge" path="res://scenes/UI/switch_indicator.tscn" id="5_teonc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pb4dp"]
@@ -24,23 +23,25 @@ margin = 0.4
 radius = 0.598797
 height = 2.13938
 
+[sub_resource type="QuadMesh" id="QuadMesh_4838f"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_jrv7h"]
 radius = 1.0309
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Control" type="Control" parent="."]
+[node name="BattleUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="health_indicator" parent="Control" instance=ExtResource("4_qmlvg")]
+[node name="health_indicator" parent="BattleUI" instance=ExtResource("4_qmlvg")]
 layout_mode = 1
 offset_left = 80.0
 offset_top = 15.0
 offset_right = 80.0
 offset_bottom = 15.0
 
-[node name="sp_indicator" parent="Control" instance=ExtResource("4_qmlvg")]
+[node name="sp_indicator" parent="BattleUI" instance=ExtResource("4_qmlvg")]
 layout_mode = 1
 offset_left = 446.0
 offset_top = 15.0
@@ -49,29 +50,23 @@ offset_bottom = 15.0
 numerator = "43"
 denominator = "55"
 
-[node name="battle_options" parent="Control" instance=ExtResource("2_hfo8p")]
+[node name="battle_options" parent="BattleUI" instance=ExtResource("2_hfo8p")]
 offset_left = 181.0
 offset_top = 230.0
 offset_right = 181.0
 offset_bottom = 230.0
 
-[node name="progress_bar_pointing" parent="Control" instance=ExtResource("3_tqlil")]
+[node name="progress_bar_pointing" parent="BattleUI" instance=ExtResource("3_tqlil")]
 offset_left = 150.0
 offset_top = 932.0
 offset_right = 150.0
 offset_bottom = 932.0
 
-[node name="switch" parent="Control" instance=ExtResource("5_teonc")]
+[node name="switch" parent="BattleUI" instance=ExtResource("5_teonc")]
 offset_left = 99.0
 offset_top = 981.0
 offset_right = 99.0
 offset_bottom = 981.0
-
-[node name="enemy_health" parent="Control" instance=ExtResource("4_setym")]
-offset_left = 1506.0
-offset_top = 972.0
-offset_right = 1506.0
-offset_bottom = 972.0
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_w4r5f")
@@ -103,6 +98,9 @@ texture = ExtResource("2_dqtvd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
 shape = SubResource("CapsuleShape3D_0bc1t")
 
+[node name="UIPrompt" type="MeshInstance3D" parent="Skuldoo"]
+mesh = SubResource("QuadMesh_4838f")
+
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56565, 0.474, -21)
 
@@ -120,4 +118,8 @@ shape = SubResource("SphereShape3D_jrv7h")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.317735, 0.94818, 0, -0.94818, 0.317735, 0, 6.59657, 0)
 
+[connection signal="attacks_pressed" from="BattleUI/battle_options" to="BattleController" method="_on_battle_options_attacks_pressed"]
+[connection signal="flee_pressed" from="BattleUI/battle_options" to="BattleController" method="_on_battle_options_flee_pressed"]
+[connection signal="gear_pressed" from="BattleUI/battle_options" to="BattleController" method="_on_battle_options_gear_pressed"]
+[connection signal="items_pressed" from="BattleUI/battle_options" to="BattleController" method="_on_battle_options_items_pressed"]
 [connection signal="body_entered" from="Node3D/Area3D" to="Node3D" method="_on_area_3d_body_entered"]
