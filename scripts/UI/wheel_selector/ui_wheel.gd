@@ -4,13 +4,17 @@ extends Control
 
 # TODO: Add item count on corner of sprite
 
-const SPRITE_SIZE = Vector2(96, 96)
+signal create_label(name : String, content : String)
+signal update_label(name : String, content : String)
+signal delete_label(name : String)
 
+@export var sprite_size := Vector2(96, 96)
 
 @export var background_color : Color = Color.BLACK
 @export var line_color : Color = Color.RED
 @export var hightlight_color : Color = Color.GRAY
 @export var selection_outline_color : Color = Color.RED
+@export var show_item_count : bool = true
 
 @export var outer_radius : int = 256
 @export var inner_radius : int = 64
@@ -32,12 +36,12 @@ func _draw() -> void:
 	# Draw Highlight Arc
 	# Draw Division Lines
 	# Draw Sprites (including highlighted brigtness)
+	# Draw item count
 	# Draw Outer Circle Line
 	# Draw Inner Circle Line
-	# Draw item count
 	# Draw Hightlight Line
 
-	var offset = SPRITE_SIZE / -2
+	var offset = sprite_size / -2
 
 	# Draw Background Circle
 	draw_circle(Vector2.ZERO, outer_radius + background_offset, background_color)
@@ -60,16 +64,34 @@ func _draw() -> void:
 			line_width
 			)
 
+		#Draw Sprites for Items
 		var start_rads = (TAU * (i-1) / (len(options)))
 		var end_rads = (TAU * i) / (len(options))
 		var mid_rads = (start_rads + end_rads) / 2.0 * -1
 		var radius_mid = (inner_radius + outer_radius) / 2
 		var draw_pos =  radius_mid * Vector2.from_angle(mid_rads) + offset
-		draw_texture_rect_region(
-			options[i].atlas,
-			Rect2(draw_pos, SPRITE_SIZE),
-			options[i].region
-			)
+		# Modulate color of unselected sprites
+		if selection != i:
+			draw_texture_rect_region(
+				options[i].atlas,
+				Rect2(draw_pos, sprite_size),
+				options[i].region,
+				Color(1, 1, 1, 0.5)
+				)
+		else:
+			draw_texture_rect_region(
+				options[i].atlas,
+				Rect2(draw_pos, sprite_size),
+				options[i].region,
+				)
+		if show_item_count:
+			var label_count : Label = Label.new()
+			label_count.label_settings = LabelSettings.new()
+			label_count.label_settings.font_color = Color.WHITE
+			label_count.label_settings.font_size = 32
+			label_count.position = draw_pos + Vector2(-80, 80)
+			label_count.text = str(options[i].count)
+			#add_child(label_count)
 
 	# Draw Outer Circle Line
 	draw_arc(Vector2.ZERO, outer_radius, 0, TAU, 128, line_color, line_width)
@@ -77,23 +99,7 @@ func _draw() -> void:
 	# Draw Inner Circle Line
 	draw_arc(Vector2.ZERO, inner_radius, 0, TAU, 128, line_color, line_width)
 
-	# if len(options) >= 3:
-	# 	for i in range(len(options) - 1):
-	# 		var rads = TAU * i / ((len(options) - 1))
-	# 		var point = Vector2.from_angle(rads)
-	# 		draw_line(
-	# 			point*(inner_radius+line_cutoff),
-	# 			point*(outer_radius-line_cutoff),
-	# 			line_color,
-	# 			line_width
-	# 			)
-	# 	draw_texture_rect_region(
-	# 		options[0].atlas,
-	# 		Rect2(offset, SPRITE_SIZE),
-	# 		options[0].region
-	# 		)
-
-	#Draw Hightlight Line
+	# Draw Hightlight Line
 	draw_polyline(
 		arc + arc.slice(0,1),
 		selection_outline_color,

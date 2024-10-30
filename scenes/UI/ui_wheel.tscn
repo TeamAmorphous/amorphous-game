@@ -9,6 +9,7 @@ atlas = ExtResource("6_2sbr8")
 region = Rect2(0, 0, 256, 256)
 script = ExtResource("2_sbrvh")
 name = "Pepper"
+count = 1
 
 [node name="ui_wheel" type="Control"]
 layout_mode = 3
