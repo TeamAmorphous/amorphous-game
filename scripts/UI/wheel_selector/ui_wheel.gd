@@ -4,10 +4,6 @@ extends Control
 
 # TODO: Add item count on corner of sprite
 
-signal create_label(name : String, content : String)
-signal update_label(name : String, content : String)
-signal delete_label(name : String)
-
 @export var sprite_size := Vector2(96, 96)
 
 @export var background_color : Color = Color.BLACK
@@ -55,7 +51,7 @@ func _draw() -> void:
 
 	# Draw Division Lines and Sprites
 	for i in range(len(options)):
-		var angle = TAU * i / ((len(options)))
+		var angle = TAU * i / (len(options))
 		var line = Vector2.from_angle(angle)
 		draw_line(
 			line*(inner_radius+line_cutoff),
@@ -84,14 +80,7 @@ func _draw() -> void:
 				Rect2(draw_pos, sprite_size),
 				options[i].region,
 				)
-		if show_item_count:
-			var label_count : Label = Label.new()
-			label_count.label_settings = LabelSettings.new()
-			label_count.label_settings.font_color = Color.WHITE
-			label_count.label_settings.font_size = 32
-			label_count.position = draw_pos + Vector2(-80, 80)
-			label_count.text = str(options[i].count)
-			#add_child(label_count)
+
 
 	# Draw Outer Circle Line
 	draw_arc(Vector2.ZERO, outer_radius, 0, TAU, 128, line_color, line_width)
@@ -106,17 +95,25 @@ func _draw() -> void:
 		highlighted_line_width
 		)
 
+func _ready() -> void:
+	var offset = sprite_size / -2
+	for i in len(options):
+		var start_rads = (TAU * (i-1) / (len(options)))
+		var end_rads = (TAU * i) / (len(options))
+		var mid_rads = (start_rads + end_rads) / 2.0 * -1
+		var radius_mid = (inner_radius + outer_radius) / 2
+		var draw_pos =  radius_mid * Vector2.from_angle(mid_rads) + offset
+		create_label(options[i].name, draw_pos, options[i].count)
+
 func _process(_delta: float) -> void:
 	var mouse_pos = get_local_mouse_position()
 	var mouse_radius = mouse_pos.length()
 
-	if mouse_radius < inner_radius:
-		selection = 0
-	else:
-		var mouse_rads = fposmod(mouse_pos.angle() * -1, TAU)
-		selection = ceil((mouse_rads / TAU) * (len(options)))
+	var mouse_rads = fposmod(mouse_pos.angle() * -1, TAU)
+	selection = ceil((mouse_rads / TAU) * (len(options)))
 
-	print(selection)
+	for i in len(options):
+		update_label(options[i].name, options[i].count)
 	queue_redraw()
 
 func arc_calculation() -> PackedVector2Array:
@@ -134,3 +131,17 @@ func arc_calculation() -> PackedVector2Array:
 
 	points_outer.reverse()
 	return points_inner + points_outer
+
+func create_label(label_name: StringName, label_position: Vector2, count: int) -> void:
+	var label_count : Label = Label.new()
+	label_count.label_settings = LabelSettings.new()
+	label_count.label_settings.font_color = Color.WHITE
+	label_count.label_settings.font_size = 32
+	label_count.position = label_position + Vector2(0, 80)
+	label_count.text = str(count)
+	label_count.name = label_name
+	add_child(label_count)
+
+
+func update_label(label_name: String, updated_count: int):
+	get_node(label_name).text = str(updated_count)
