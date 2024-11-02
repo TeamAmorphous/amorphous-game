@@ -44,12 +44,14 @@ func _draw() -> void:
 
 	# Draw Highlight Arc
 	var arc : PackedVector2Array = arc_calculation()
-	draw_polygon(
-		arc,
-		PackedColorArray([hightlight_color])
-		)
+	if selection != -1:
+		draw_polygon(
+			arc,
+			PackedColorArray([hightlight_color])
+			)
 
 	# Draw Division Lines and Sprites
+	print(range(len(options)))
 	for i in range(len(options)):
 		var angle = TAU * i / (len(options))
 		var line = Vector2.from_angle(angle)
@@ -61,8 +63,8 @@ func _draw() -> void:
 			)
 
 		#Draw Sprites for Items
-		var start_rads = (TAU * (i-1) / (len(options)))
-		var end_rads = (TAU * i) / (len(options))
+		var start_rads = (TAU * (i) / (len(options)))
+		var end_rads = (TAU * (i+1)) / (len(options))
 		var mid_rads = (start_rads + end_rads) / 2.0 * -1
 		var radius_mid = (inner_radius + outer_radius) / 2
 		var draw_pos =  radius_mid * Vector2.from_angle(mid_rads) + offset
@@ -78,7 +80,7 @@ func _draw() -> void:
 			draw_texture_rect_region(
 				options[i].atlas,
 				Rect2(draw_pos, sprite_size),
-				options[i].region,
+				options[i].region
 				)
 
 
@@ -89,36 +91,44 @@ func _draw() -> void:
 	draw_arc(Vector2.ZERO, inner_radius, 0, TAU, 128, line_color, line_width)
 
 	# Draw Hightlight Line
-	draw_polyline(
-		arc + arc.slice(0,1),
-		selection_outline_color,
-		highlighted_line_width
-		)
+	if selection != -1:
+		draw_polyline(
+			arc + arc.slice(0,1),
+			selection_outline_color,
+			highlighted_line_width
+			)
 
 func _ready() -> void:
 	var offset = sprite_size / -2
 	for i in len(options):
-		var start_rads = (TAU * (i-1) / (len(options)))
-		var end_rads = (TAU * i) / (len(options))
+		var start_rads = (TAU * (i) / (len(options)))
+		var end_rads = (TAU * (i+1)) / (len(options))
 		var mid_rads = (start_rads + end_rads) / 2.0 * -1
 		var radius_mid = (inner_radius + outer_radius) / 2
 		var draw_pos =  radius_mid * Vector2.from_angle(mid_rads) + offset
 		create_label(options[i].name, draw_pos, options[i].count)
+	for item in options:
+		print(item.name)
+
 
 func _process(_delta: float) -> void:
 	var mouse_pos = get_local_mouse_position()
 	var mouse_radius = mouse_pos.length()
 
-	var mouse_rads = fposmod(mouse_pos.angle() * -1, TAU)
-	selection = ceil((mouse_rads / TAU) * (len(options)))
+	if mouse_radius > outer_radius:
+		selection = -1
+	else:
+		var mouse_rads = fposmod(mouse_pos.angle() * -1, TAU)
+		selection = floor((mouse_rads / TAU) * (len(options)))
+	print(selection)
 
 	for i in len(options):
 		update_label(options[i].name, options[i].count)
 	queue_redraw()
 
 func arc_calculation() -> PackedVector2Array:
-	var start_rads = (TAU * (selection-1) / (len(options)))
-	var end_rads = (TAU * selection) / (len(options))
+	var start_rads = (TAU * (selection) / (len(options)))
+	var end_rads = (TAU * (selection+1)) / (len(options))
 	var points_per_arc = 32
 
 	var points_inner = PackedVector2Array()
