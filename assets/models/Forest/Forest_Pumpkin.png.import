@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biracqbigreu4"
+uid="uid://dindniattg8l"
 path.s3tc="res://.godot/imported/Forest_Pumpkin.png-cb736bd504dccee72f6ae0d5e8eee85c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "baf0d473f91a6ae5b19f6874126b5b41"
 }
 
 [deps]

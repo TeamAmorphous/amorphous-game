@@ -90,12 +90,21 @@ func _draw() -> void:
 	# Draw Inner Circle Line
 	draw_arc(Vector2.ZERO, inner_radius, 0, TAU, 128, line_color, line_width)
 
-	# Draw Hightlight Line
+
+	# Draw Hightlight Line & Item Selection
 	if selection != -1:
+		draw_circle(Vector2.ZERO, inner_radius + 5, selection_outline_color)
+
 		draw_polyline(
 			arc + arc.slice(0,1),
 			selection_outline_color,
 			highlighted_line_width
+			)
+
+		draw_texture_rect_region(
+			options[selection].atlas,
+			Rect2(Vector2.ZERO + offset, sprite_size),
+			options[selection].region
 			)
 
 func _ready() -> void:
