@@ -23,66 +23,52 @@ extends Control
 @export var options : Array[WheelOption]
 
 var selection = 0
+var angle_offset
+var arc_angle
 
 func _draw() -> void:
-	#TODO: Set code regions for function
-
-	# Gen algo:
-	# Draw Background Circle
-	# Draw Highlight Arc
-	# Draw Division Lines
-	# Draw Sprites (including highlighted brigtness)
-	# Draw item count
-	# Draw Outer Circle Line
-	# Draw Inner Circle Line
-	# Draw Hightlight Line
-
+	# Offset position for centering sprites
 	var offset = sprite_size / -2
 
 	# Draw Background Circle
 	draw_circle(Vector2.ZERO, outer_radius + background_offset, background_color)
 
-	# Draw Highlight Arc
+	# Draw Highlight Arc if a selection is made
 	var arc : PackedVector2Array = arc_calculation()
 	if selection != -1:
 		draw_polygon(
 			arc,
 			PackedColorArray([hightlight_color])
-			)
+		)
 
-	# Draw Division Lines and Sprites
-	print(range(len(options)))
+	# Draw sprites & lines
 	for i in range(len(options)):
-		var angle = TAU * i / (len(options))
-		var line = Vector2.from_angle(angle)
-		draw_line(
-			line*(inner_radius+line_cutoff),
-			line*(outer_radius-line_cutoff),
-			line_color,
-			line_width
-			)
-
-		#Draw Sprites for Items
-		var start_rads = (TAU * (i) / (len(options)))
-		var end_rads = (TAU * (i+1)) / (len(options))
-		var mid_rads = (start_rads + end_rads) / 2.0 * -1
+		var mid_rads = ((TAU/len(options)) * i) + angle_offset
 		var radius_mid = (inner_radius + outer_radius) / 2
-		var draw_pos =  radius_mid * Vector2.from_angle(mid_rads) + offset
-		# Modulate color of unselected sprites
-		if selection != i:
+		var draw_pos = radius_mid * Vector2.from_angle(mid_rads) + offset
+		if i != selection:
 			draw_texture_rect_region(
 				options[i].atlas,
 				Rect2(draw_pos, sprite_size),
 				options[i].region,
 				Color(1, 1, 1, 0.5)
-				)
+			)
 		else:
 			draw_texture_rect_region(
 				options[i].atlas,
 				Rect2(draw_pos, sprite_size),
 				options[i].region
-				)
+			)
 
+		# Calculate the angle for each line starting from the top
+		var line_vector = Vector2.from_angle(mid_rads - (arc_angle/2))
+		# Draw division line from inner to outer radius
+		draw_line(
+			line_vector * (inner_radius + line_cutoff),
+			line_vector * (outer_radius - line_cutoff),
+			line_color,
+			line_width
+		)
 
 	# Draw Outer Circle Line
 	draw_arc(Vector2.ZERO, outer_radius, 0, TAU, 128, line_color, line_width)
@@ -90,66 +76,76 @@ func _draw() -> void:
 	# Draw Inner Circle Line
 	draw_arc(Vector2.ZERO, inner_radius, 0, TAU, 128, line_color, line_width)
 
-
-	# Draw Hightlight Line & Item Selection
+	# Draw Highlight Line & Selection Outline if selected
 	if selection != -1:
 		draw_circle(Vector2.ZERO, inner_radius + 5, selection_outline_color)
 
+		# Close the arc by connecting the last point to the first for smoothness
 		draw_polyline(
 			arc + arc.slice(0,1),
 			selection_outline_color,
 			highlighted_line_width
-			)
+		)
 
+		# Draw selected item sprite at the center for highlight
 		draw_texture_rect_region(
 			options[selection].atlas,
 			Rect2(Vector2.ZERO + offset, sprite_size),
 			options[selection].region
-			)
+		)
 
 func _ready() -> void:
 	var offset = sprite_size / -2
 	for i in len(options):
-		var start_rads = (TAU * (i) / (len(options)))
-		var end_rads = (TAU * (i+1)) / (len(options))
-		var mid_rads = (start_rads + end_rads) / 2.0 * -1
+		var fraction_angle = TAU * -i / len(options)
+		var mid_rads = ((TAU/len(options)) * i) + angle_offset
 		var radius_mid = (inner_radius + outer_radius) / 2
-		var draw_pos =  radius_mid * Vector2.from_angle(mid_rads) + offset
+		var draw_pos = radius_mid * Vector2.from_angle(mid_rads) + offset
 		create_label(options[i].name, draw_pos, options[i].count)
 	for item in options:
 		print(item.name)
 
 
+
 func _process(_delta: float) -> void:
+	angle_offset = -(PI/2)
+	arc_angle = (TAU / len(options))
 	var mouse_pos = get_local_mouse_position()
 	var mouse_radius = mouse_pos.length()
-
 	if mouse_radius > outer_radius:
 		selection = -1
 	else:
-		var mouse_rads = fposmod(mouse_pos.angle() * -1, TAU)
+		var mouse_rads = fposmod((mouse_pos.angle_to(Vector2(0,-1)) - (arc_angle / 2)) * -1, TAU)
 		selection = floor((mouse_rads / TAU) * (len(options)))
-	print(selection)
 
-	for i in len(options):
+		print(selection)
+
+	for i in range(len(options)):
 		update_label(options[i].name, options[i].count)
 	queue_redraw()
 
+
 func arc_calculation() -> PackedVector2Array:
-	var start_rads = (TAU * (selection) / (len(options)))
-	var end_rads = (TAU * (selection+1)) / (len(options))
+	# Calculate start and end angles for the selection, adjusted to start at 12 o'clock
+	var fraction_angle = TAU * -selection / len(options)
+	var start_rads = fraction_angle - (arc_angle / 2) - angle_offset
+	var end_rads = fraction_angle + (arc_angle / 2) - angle_offset
 	var points_per_arc = 32
 
+	# Arrays to store points for inner and outer edges of the arc
 	var points_inner = PackedVector2Array()
 	var points_outer = PackedVector2Array()
 
+	# Generate points for the arc
 	for j in range(points_per_arc + 1):
 		var angle = start_rads + j * (end_rads - start_rads) / points_per_arc
 		points_inner.append(inner_radius * Vector2.from_angle(TAU - angle))
 		points_outer.append(outer_radius * Vector2.from_angle(TAU - angle))
 
+	# Reverse outer points to complete the arc shape correctly
 	points_outer.reverse()
 	return points_inner + points_outer
+
 
 func create_label(label_name: StringName, label_position: Vector2, count: int) -> void:
 	var label_count : Label = Label.new()
