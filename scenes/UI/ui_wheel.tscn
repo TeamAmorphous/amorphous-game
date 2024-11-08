@@ -17,6 +17,7 @@ region = Rect2(0, 0, 256, 256)
 script = ExtResource("2_sbrvh")
 name = "Apple"
 count = 12
+color = Color(0.835294, 0.270588, 0.207843, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_srx3x"]
 atlas = ExtResource("5_1fesb")
@@ -24,6 +25,7 @@ region = Rect2(0, 0, 256, 256)
 script = ExtResource("2_sbrvh")
 name = "Coffee"
 count = 4
+color = Color(0.847059, 0.662745, 0.298039, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rklj0"]
 atlas = ExtResource("3_l7ybp")
@@ -31,6 +33,7 @@ region = Rect2(0, 0, 256, 256)
 script = ExtResource("2_sbrvh")
 name = "Caramel Apple"
 count = 2
+color = Color(0.835294, 0.482353, 0.113725, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_047v2"]
 atlas = ExtResource("6_pqm3k")
@@ -38,6 +41,7 @@ region = Rect2(0, 0, 256, 256)
 script = ExtResource("2_sbrvh")
 name = "Grenade"
 count = 3
+color = Color(0.360784, 0.34902, 0.152941, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gfh0q"]
 atlas = ExtResource("7_eo0wm")
@@ -45,6 +49,7 @@ region = Rect2(0, 0, 256, 256)
 script = ExtResource("2_sbrvh")
 name = "Pepper"
 count = 5
+color = Color(0.752941, 0.262745, 0.14902, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_im2ia"]
 atlas = ExtResource("8_3kmmq")
@@ -52,6 +57,7 @@ region = Rect2(0, 0, 256, 256)
 script = ExtResource("2_sbrvh")
 name = "Punching Glove"
 count = 2
+color = Color(0.592157, 0.12549, 0.235294, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lytl8"]
 atlas = ExtResource("9_jb270")
@@ -59,6 +65,7 @@ region = Rect2(0, 0, 469, 433)
 script = ExtResource("2_sbrvh")
 name = "Disk"
 count = 10
+color = Color(0.482353, 0.654902, 0.752941, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ambor"]
 atlas = ExtResource("10_a6hlm")
@@ -66,6 +73,7 @@ region = Rect2(0, 0, 566, 469)
 script = ExtResource("2_sbrvh")
 name = "Art"
 count = 4
+color = Color(0.482353, 0.654902, 0.752941, 1)
 
 [node name="ui_wheel" type="Control"]
 layout_mode = 3
@@ -80,8 +88,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xxf4f")
 background_color = Color(0, 0, 0, 0.666667)
-hightlight_color = Color(1, 0, 0, 0.392157)
-selection_outline_color = Color(1, 0.5023, 0.43551, 1)
+line_color = Color(0.482353, 0.654902, 0.752941, 1)
+hightlight_color = Color(0.482353, 0.654902, 0.752941, 0.5)
+selection_outline_color = Color(0.782353, 0.954902, 1.05294, 2)
 outer_radius = 266
 inner_radius = 84
 panel_offset = 15
@@ -98,6 +107,7 @@ offset_top = 16.0
 offset_right = 78.0
 offset_bottom = 75.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(-0.017647, 0.154902, 0.252941, 1)
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 vertical_alignment = 1

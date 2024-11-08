@@ -113,6 +113,12 @@ func _process(_delta: float) -> void:
 		var mouse_rads = fposmod((mouse_pos.angle_to(Vector2(0,-1)) - (arc_angle / 2)) * -1, TAU)
 		selection = floor((mouse_rads / TAU) * (len(options)))
 
+	line_color = options[selection].color
+	hightlight_color = line_color - Color(0, 0, 0, .5)
+	selection_outline_color = line_color + Color(0.3, 0.3, 0.3, 1)
+
+	get_node("Selection").set("theme_override_colors/font_color", line_color - Color(0.5, 0.5, 0.5, 0))
+
 	for i in range(len(options)):
 		update_label(options[i].name, options[i].count)
 
