@@ -1,17 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqq6n575pwceb"]
+[gd_scene load_steps=19 format=3 uid="uid://cqq6n575pwceb"]
 
 [ext_resource type="Script" path="res://scripts/UI/wheel_selector/ui_wheel.gd" id="1_xxf4f"]
 [ext_resource type="Script" path="res://scripts/UI/wheel_selector/wheel_option.gd" id="2_sbrvh"]
 [ext_resource type="Texture2D" uid="uid://b0dfrwrf0c656" path="res://assets/sprites/Apple.png" id="3_d7s3j"]
 [ext_resource type="Texture2D" uid="uid://bejkb1a4n5tck" path="res://assets/sprites/Caramel_Apple.png" id="3_l7ybp"]
 [ext_resource type="Texture2D" uid="uid://b8qe2jiw2svy1" path="res://assets/sprites/Coffee.png" id="5_1fesb"]
+[ext_resource type="Texture2D" uid="uid://4l1wonfmvarg" path="res://assets/sprites/Grenade.png" id="6_pqm3k"]
+[ext_resource type="Texture2D" uid="uid://bfik1dmqbgwn5" path="res://assets/sprites/Pepper.png" id="7_eo0wm"]
+[ext_resource type="Texture2D" uid="uid://b1chkjwubg07u" path="res://assets/sprites/Punching_Glove.png" id="8_3kmmq"]
+[ext_resource type="Texture2D" uid="uid://ctfwfdrc5wmef" path="res://assets/sprites/Disk.png" id="9_jb270"]
+[ext_resource type="Texture2D" uid="uid://b5mic317tfwjx" path="res://assets/sprites/Art.png" id="10_a6hlm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qt6kw"]
 atlas = ExtResource("3_d7s3j")
 region = Rect2(0, 0, 256, 256)
 script = ExtResource("2_sbrvh")
 name = "Apple"
-count = 1
+count = 12
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_srx3x"]
 atlas = ExtResource("5_1fesb")
@@ -26,6 +31,41 @@ region = Rect2(0, 0, 256, 256)
 script = ExtResource("2_sbrvh")
 name = "Caramel Apple"
 count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_047v2"]
+atlas = ExtResource("6_pqm3k")
+region = Rect2(0, 0, 256, 256)
+script = ExtResource("2_sbrvh")
+name = "Grenade"
+count = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfh0q"]
+atlas = ExtResource("7_eo0wm")
+region = Rect2(0, 0, 256, 256)
+script = ExtResource("2_sbrvh")
+name = "Pepper"
+count = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im2ia"]
+atlas = ExtResource("8_3kmmq")
+region = Rect2(0, 0, 256, 256)
+script = ExtResource("2_sbrvh")
+name = "Punching Glove"
+count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lytl8"]
+atlas = ExtResource("9_jb270")
+region = Rect2(0, 0, 469, 433)
+script = ExtResource("2_sbrvh")
+name = "Disk"
+count = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ambor"]
+atlas = ExtResource("10_a6hlm")
+region = Rect2(0, 0, 566, 469)
+script = ExtResource("2_sbrvh")
+name = "Art"
+count = 4
 
 [node name="ui_wheel" type="Control"]
 layout_mode = 3
@@ -46,4 +86,19 @@ outer_radius = 266
 inner_radius = 84
 panel_offset = 15
 highlighted_line_width = 10
-options = Array[ExtResource("2_sbrvh")]([SubResource("AtlasTexture_qt6kw"), SubResource("AtlasTexture_srx3x"), SubResource("AtlasTexture_rklj0"), SubResource("AtlasTexture_rklj0"), SubResource("AtlasTexture_srx3x"), SubResource("AtlasTexture_qt6kw")])
+options = Array[ExtResource("2_sbrvh")]([SubResource("AtlasTexture_qt6kw"), SubResource("AtlasTexture_srx3x"), SubResource("AtlasTexture_rklj0"), SubResource("AtlasTexture_047v2"), SubResource("AtlasTexture_gfh0q"), SubResource("AtlasTexture_im2ia"), SubResource("AtlasTexture_lytl8"), SubResource("AtlasTexture_ambor")])
+
+[node name="Selection" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_top = 16.0
+offset_right = 78.0
+offset_bottom = 75.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

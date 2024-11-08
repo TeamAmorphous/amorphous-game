@@ -23,7 +23,7 @@ extends Control
 @export var options : Array[WheelOption]
 
 var selection = 0
-var angle_offset
+var angle_offset = -(PI/2)
 var arc_angle
 
 func _draw() -> void:
@@ -90,25 +90,20 @@ func _draw() -> void:
 		# Draw selected item sprite at the center for highlight
 		draw_texture_rect_region(
 			options[selection].atlas,
-			Rect2(Vector2.ZERO + offset, sprite_size),
+			Rect2(Vector2.ZERO + offset + Vector2(0, -25), sprite_size),
 			options[selection].region
 		)
 
 func _ready() -> void:
 	var offset = sprite_size / -2
 	for i in len(options):
-		var fraction_angle = TAU * -i / len(options)
 		var mid_rads = ((TAU/len(options)) * i) + angle_offset
 		var radius_mid = (inner_radius + outer_radius) / 2
 		var draw_pos = radius_mid * Vector2.from_angle(mid_rads) + offset
 		create_label(options[i].name, draw_pos, options[i].count)
-	for item in options:
-		print(item.name)
-
 
 
 func _process(_delta: float) -> void:
-	angle_offset = -(PI/2)
 	arc_angle = (TAU / len(options))
 	var mouse_pos = get_local_mouse_position()
 	var mouse_radius = mouse_pos.length()
@@ -118,10 +113,13 @@ func _process(_delta: float) -> void:
 		var mouse_rads = fposmod((mouse_pos.angle_to(Vector2(0,-1)) - (arc_angle / 2)) * -1, TAU)
 		selection = floor((mouse_rads / TAU) * (len(options)))
 
-		print(selection)
-
 	for i in range(len(options)):
 		update_label(options[i].name, options[i].count)
+
+	if selection != -1:
+		get_node("Selection").text = options[selection].name
+	else:
+		get_node("Selection").text = ""
 	queue_redraw()
 
 
@@ -152,10 +150,11 @@ func create_label(label_name: StringName, label_position: Vector2, count: int) -
 	label_count.label_settings = LabelSettings.new()
 	label_count.label_settings.font_color = Color.WHITE
 	label_count.label_settings.font_size = 32
-	label_count.position = label_position + Vector2(0, 80)
+	label_count.position = label_position + Vector2(10, 80)
 	label_count.text = str(count)
 	label_count.name = label_name
 	add_child(label_count)
+	print('label created')
 
 
 func update_label(label_name: String, updated_count: int):
