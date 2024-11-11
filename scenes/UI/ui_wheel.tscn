@@ -41,7 +41,7 @@ region = Rect2(0, 0, 256, 256)
 script = ExtResource("2_sbrvh")
 name = "Grenade"
 count = 3
-color = Color(0.360784, 0.34902, 0.152941, 1)
+color = Color(0.698039, 0.635294, 0.552941, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gfh0q"]
 atlas = ExtResource("7_eo0wm")
@@ -71,7 +71,7 @@ color = Color(0.482353, 0.654902, 0.752941, 1)
 atlas = ExtResource("10_a6hlm")
 region = Rect2(0, 0, 566, 469)
 script = ExtResource("2_sbrvh")
-name = "Art"
+name = "Mirror"
 count = 4
 color = Color(0.482353, 0.654902, 0.752941, 1)
 
@@ -90,12 +90,11 @@ script = ExtResource("1_xxf4f")
 background_color = Color(0, 0, 0, 0.666667)
 line_color = Color(0.482353, 0.654902, 0.752941, 1)
 hightlight_color = Color(0.482353, 0.654902, 0.752941, 0.5)
-selection_outline_color = Color(0.782353, 0.954902, 1.05294, 2)
+selection_outline_color = Color(0.682353, 0.854902, 0.952941, 2)
 outer_radius = 266
 inner_radius = 84
-panel_offset = 15
 highlighted_line_width = 10
-options = Array[ExtResource("2_sbrvh")]([SubResource("AtlasTexture_qt6kw"), SubResource("AtlasTexture_srx3x"), SubResource("AtlasTexture_rklj0"), SubResource("AtlasTexture_047v2"), SubResource("AtlasTexture_gfh0q"), SubResource("AtlasTexture_im2ia"), SubResource("AtlasTexture_lytl8"), SubResource("AtlasTexture_ambor")])
+wheel_options = Array[ExtResource("2_sbrvh")]([SubResource("AtlasTexture_qt6kw"), SubResource("AtlasTexture_srx3x"), SubResource("AtlasTexture_rklj0"), SubResource("AtlasTexture_047v2"), SubResource("AtlasTexture_gfh0q"), SubResource("AtlasTexture_im2ia"), SubResource("AtlasTexture_lytl8"), SubResource("AtlasTexture_ambor")])
 
 [node name="Selection" type="Label" parent="."]
 layout_mode = 1
@@ -107,7 +106,7 @@ offset_top = 16.0
 offset_right = 78.0
 offset_bottom = 75.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(-0.017647, 0.154902, 0.252941, 1)
+theme_override_colors/font_color = Color(0.082353, 0.254902, 0.352941, 1)
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,65 +1,83 @@
-## TODO: Document code
 @tool
 extends Control
 
-# TODO: Add item count on corner of sprite
+## The Custom Wheel Menu Script
+##
+## This class is the implementation of a custom wheel menu control, this custom
+## UI will serve the purpose of quick selection of items during combat or in
+## quick menus.
+##
+## @tutorial:												https://www.youtube.com/watch?v=TtziEJZtWXc
 
 @export var sprite_size := Vector2(96, 96)
+@export var background_color := Color.BLACK
+@export var line_color := Color.RED
+@export var hightlight_color := Color.GRAY
+@export var selection_outline_color := Color.RED
+@export var outer_radius := 256
+@export var inner_radius := 64
+@export var line_width := 4
+@export var line_cutoff := 15
+@export var background_offset := 15
+@export var highlighted_line_width := 7
+@export var wheel_options : Array[WheelOption]
+var selection := -1
+var angle_offset := -(PI/2)
+var arc_angle := (TAU / len(wheel_options))
 
-@export var background_color : Color = Color.BLACK
-@export var line_color : Color = Color.RED
-@export var hightlight_color : Color = Color.GRAY
-@export var selection_outline_color : Color = Color.RED
-@export var show_item_count : bool = true
+## On ready the control object will create the labels for the objects in the
+## wheel and add them to the tree.
+func _ready() -> void:
+	#TODO: Move the label population to _process() so labels update in real time.
+	var offset = sprite_size / -2
+	for i in len(wheel_options):
+		var mid_rads = ((TAU/len(wheel_options)) * i) + angle_offset
+		var radius_mid = (inner_radius + outer_radius) / 2
+		var draw_pos = radius_mid * Vector2.from_angle(mid_rads) + offset
+		create_label(wheel_options[i].name, draw_pos, wheel_options[i].count)
 
-@export var outer_radius : int = 256
-@export var inner_radius : int = 64
-@export var line_width : int = 4
-@export var panel_offset : int = 5
-@export var line_cutoff : int = 15
-@export var background_offset : int = 15
-@export var highlighted_line_width : int = 7
 
-@export var options : Array[WheelOption]
-
-var selection = 0
-var angle_offset = -(PI/2)
-var arc_angle
-
+## The draw call will draw the wheel menu and update the number of sprites in
+## real time. Make sure all draw calls are put in this function.
 func _draw() -> void:
 	# Offset position for centering sprites
-	var offset = sprite_size / -2
+	var sprite_offset := sprite_size / -2
+	var highlight_arc : PackedVector2Array
 
 	# Draw Background Circle
 	draw_circle(Vector2.ZERO, outer_radius + background_offset, background_color)
+	# Draw Outer Circle Line
+	draw_arc(Vector2.ZERO, outer_radius, 0, TAU, 128, line_color, line_width)
+	# Draw Inner Circle Line
+	draw_arc(Vector2.ZERO, inner_radius, 0, TAU, 128, line_color, line_width)
 
 	# Draw Highlight Arc if a selection is made
-	var arc : PackedVector2Array = arc_calculation()
 	if selection != -1:
+		highlight_arc = arc_calculation()
 		draw_polygon(
-			arc,
+			highlight_arc,
 			PackedColorArray([hightlight_color])
 		)
 
 	# Draw sprites & lines
-	for i in range(len(options)):
-		var mid_rads = ((TAU/len(options)) * i) + angle_offset
+	for i in range(len(wheel_options)):
+		var mid_rads = ((TAU/len(wheel_options)) * i) + angle_offset
 		var radius_mid = (inner_radius + outer_radius) / 2
-		var draw_pos = radius_mid * Vector2.from_angle(mid_rads) + offset
+		var draw_pos = radius_mid * Vector2.from_angle(mid_rads) + sprite_offset
+		# Draw unselected sprites darker
 		if i != selection:
 			draw_texture_rect_region(
-				options[i].atlas,
+				wheel_options[i].atlas,
 				Rect2(draw_pos, sprite_size),
-				options[i].region,
+				wheel_options[i].region,
 				Color(1, 1, 1, 0.5)
 			)
 		else:
 			draw_texture_rect_region(
-				options[i].atlas,
+				wheel_options[i].atlas,
 				Rect2(draw_pos, sprite_size),
-				options[i].region
+				wheel_options[i].region
 			)
-
 		# Calculate the angle for each line starting from the top
 		var line_vector = Vector2.from_angle(mid_rads - (arc_angle/2))
 		# Draw division line from inner to outer radius
@@ -70,68 +88,52 @@ func _draw() -> void:
 			line_width
 		)
 
-	# Draw Outer Circle Line
-	draw_arc(Vector2.ZERO, outer_radius, 0, TAU, 128, line_color, line_width)
-
-	# Draw Inner Circle Line
-	draw_arc(Vector2.ZERO, inner_radius, 0, TAU, 128, line_color, line_width)
-
-	# Draw Highlight Line & Selection Outline if selected
+	# Draw Highlight Line and Center Sprite if selected
 	if selection != -1:
 		draw_circle(Vector2.ZERO, inner_radius + 5, selection_outline_color)
-
-		# Close the arc by connecting the last point to the first for smoothness
+		draw_texture_rect_region(
+			wheel_options[selection].atlas,
+			Rect2(Vector2.ZERO + sprite_offset + Vector2(0, -25), sprite_size),
+			wheel_options[selection].region
+		)
 		draw_polyline(
-			arc + arc.slice(0,1),
+			highlight_arc + highlight_arc.slice(0,1),
 			selection_outline_color,
 			highlighted_line_width
 		)
 
-		# Draw selected item sprite at the center for highlight
-		draw_texture_rect_region(
-			options[selection].atlas,
-			Rect2(Vector2.ZERO + offset + Vector2(0, -25), sprite_size),
-			options[selection].region
-		)
-
-func _ready() -> void:
-	var offset = sprite_size / -2
-	for i in len(options):
-		var mid_rads = ((TAU/len(options)) * i) + angle_offset
-		var radius_mid = (inner_radius + outer_radius) / 2
-		var draw_pos = radius_mid * Vector2.from_angle(mid_rads) + offset
-		create_label(options[i].name, draw_pos, options[i].count)
-
-
+## Each frame recalculate the selection according to the mouse position, update
+## the item labels, and make a new draw call
 func _process(_delta: float) -> void:
-	arc_angle = (TAU / len(options))
+	arc_angle = (TAU / len(wheel_options))
 	var mouse_pos = get_local_mouse_position()
 	var mouse_radius = mouse_pos.length()
 	if mouse_radius > outer_radius:
 		selection = -1
 	else:
 		var mouse_rads = fposmod((mouse_pos.angle_to(Vector2(0,-1)) - (arc_angle / 2)) * -1, TAU)
-		selection = floor((mouse_rads / TAU) * (len(options)))
+		selection = floor((mouse_rads / TAU) * (len(wheel_options)))
 
-	line_color = options[selection].color
+	line_color = wheel_options[selection].color
 	hightlight_color = line_color - Color(0, 0, 0, .5)
-	selection_outline_color = line_color + Color(0.3, 0.3, 0.3, 1)
+	selection_outline_color = line_color + Color(0.2, 0.2, 0.2, 1)
+	get_node("Selection").set("theme_override_colors/font_color", line_color - Color(0.4, 0.4, 0.4, 0))
 
-	get_node("Selection").set("theme_override_colors/font_color", line_color - Color(0.5, 0.5, 0.5, 0))
-
-	for i in range(len(options)):
-		update_label(options[i].name, options[i].count)
+	for i in range(len(wheel_options)):
+		get_node(wheel_options[i].name).text = str(wheel_options[i].count)
 
 	if selection != -1:
-		get_node("Selection").text = options[selection].name
+		get_node("Selection").text = wheel_options[selection].name
 	else:
 		get_node("Selection").text = ""
+
 	queue_redraw()
 
-
+## The arc calculation function will return a PackedVector2Array with the lines
+## required to draw the outline of the selected arc.
 func arc_calculation() -> PackedVector2Array:
 	# Calculate start and end angles for the selection, adjusted to start at 12 o'clock
-	var fraction_angle = TAU * -selection / len(options)
+	var fraction_angle = TAU * -selection / len(wheel_options)
 	var start_rads = fraction_angle - (arc_angle / 2) - angle_offset
 	var end_rads = fraction_angle + (arc_angle / 2) - angle_offset
 	var points_per_arc = 32
@@ -150,7 +152,7 @@ func arc_calculation() -> PackedVector2Array:
 	points_outer.reverse()
 	return points_inner + points_outer
 
-
+## Create a label object that can then be added to the scene tree.
 func create_label(label_name: StringName, label_position: Vector2, count: int) -> void:
 	var label_count : Label = Label.new()
 	label_count.label_settings = LabelSettings.new()
@@ -161,7 +163,3 @@ func create_label(label_name: StringName, label_position: Vector2, count: int) -
 	label_count.name = label_name
 	add_child(label_count)
 	print('label created')
-
-
-func update_label(label_name: String, updated_count: int):
-	get_node(label_name).text = str(updated_count)
