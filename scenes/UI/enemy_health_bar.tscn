@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://byvy05epusiwx"]
+
+[ext_resource type="Theme" uid="uid://tdd03p6q1wie" path="res://assets/others/AmorphousTheme.tres" id="1_4hnc4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d70ha"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="progress_bar_pointing" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 45.0
+offset_top = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_4hnc4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d70ha")
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = -20.0
+offset_bottom = -45.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="Panel/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.43
+
+[node name="Label" type="Label" parent="Panel/PanelContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 4.0
+offset_right = -17.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4hnc4")
+theme_override_colors/font_color = Color(1, 0.188235, 0.270588, 1)
+theme_override_font_sizes/font_size = 26
+text = "8"
+horizontal_alignment = 1
+vertical_alignment = 3
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="Panel2" type="Panel" parent="Panel/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.88
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/PanelContainer/HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.6
+step = 1.0
+value = 29.0
+show_percentage = false
+
+[node name="Polygon2D" type="Polygon2D" parent="Panel"]
+position = Vector2(149, 6)
+rotation = -1.5708
+scale = Vector2(1, 1.25)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-9, -0.800049, -9.00006, 18.4, 2.99997, 8.79999)

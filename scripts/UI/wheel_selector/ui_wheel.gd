@@ -102,6 +102,7 @@ func _draw() -> void:
 			highlighted_line_width
 		)
 
+
 ## Each frame recalculate the selection according to the mouse position, update
 ## the item labels, and make a new draw call
 func _process(_delta: float) -> void:
@@ -129,6 +130,7 @@ func _process(_delta: float) -> void:
 
 	queue_redraw()
 
+
 ## The arc calculation function will return a PackedVector2Array with the lines
 ## required to draw the outline of the selected arc.
 func arc_calculation() -> PackedVector2Array:
@@ -151,6 +153,7 @@ func arc_calculation() -> PackedVector2Array:
 	# Reverse outer points to complete the arc shape correctly
 	points_outer.reverse()
 	return points_inner + points_outer
+
 
 ## Create a label object that can then be added to the scene tree.
 func create_label(label_name: StringName, label_position: Vector2, count: int) -> void:

@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bajv4fqmoqhrn"]
+
+[ext_resource type="PackedScene" uid="uid://byvy05epusiwx" path="res://scenes/UI/enemy_health_bar.tscn" id="1_7ycxh"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="progress_bar_pointing2" parent="." instance=ExtResource("1_7ycxh")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = 34.0
+offset_right = 17.0
+offset_bottom = 34.0

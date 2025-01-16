@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://caqssw6d7dii0"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_yjtxh"]
+[ext_resource type="Texture2D" uid="uid://bhocv5h17q4x3" path="res://assets/sprites/gear_rig.png" id="2_beg4e"]
+[ext_resource type="Texture2D" uid="uid://bi5rouwcwyfl" path="res://assets/new_viewport_texture.tres" id="3_yqtnx"]
+[ext_resource type="PackedScene" uid="uid://byvy05epusiwx" path="res://scenes/UI/enemy_health_bar.tscn" id="4_2hpfj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jrv7h"]
+radius = 1.0309
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6h31m"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+disable_ambient_light = true
+disable_fog = true
+albedo_texture = ExtResource("3_yqtnx")
+
+[sub_resource type="QuadMesh" id="QuadMesh_58tfd"]
+size = Vector2(0.75, 0.25)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_yjtxh")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.539196, 0)
+pixel_size = 0.0007
+billboard = 1
+alpha_cut = 2
+texture = ExtResource("2_beg4e")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_jrv7h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.316302, 0.076523, 0.778831)
+material_override = SubResource("StandardMaterial3D_6h31m")
+mesh = SubResource("QuadMesh_58tfd")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(300, 100)
+
+[node name="progress_bar_pointing" parent="SubViewport" instance=ExtResource("4_2hpfj")]
+offset_left = 0.0
+offset_top = 0.0
+
+[connection signal="cog_battle_scene_called" from="." to="." method="_on_cog_battle_scene_called"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

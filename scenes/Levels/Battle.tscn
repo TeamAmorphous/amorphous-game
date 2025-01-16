@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cm2fwwfpg4eow"]
+[gd_scene load_steps=15 format=3 uid="uid://cm2fwwfpg4eow"]
 
 [ext_resource type="Script" path="res://scripts/battle_controller.gd" id="1_bo6sd"]
 [ext_resource type="Texture2D" uid="uid://b08g11aavdvka" path="res://assets/models/Forest/sprites/Skuldoo.png" id="2_dqtvd"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5ciwftpbrg00" path="res://scenes/UI/progress_bar_pointing.tscn" id="3_tqlil"]
 [ext_resource type="PackedScene" uid="uid://cq0m8ppfjc3qu" path="res://scenes/UI/number_indicator.tscn" id="4_qmlvg"]
 [ext_resource type="PackedScene" uid="uid://sfl4hwy4ge" path="res://scenes/UI/switch_indicator.tscn" id="5_teonc"]
+[ext_resource type="PackedScene" uid="uid://caqssw6d7dii0" path="res://scenes/Characters/cog_display.tscn" id="8_xg8jn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pb4dp"]
 albedo_color = Color(0.647408, 0.624239, 0.303153, 1)
@@ -81,7 +82,7 @@ shape = SubResource("ConcavePolygonShape3D_smhu1")
 script = ExtResource("1_bo6sd")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 7.6194e-09, -8.70901e-08, 0, 0.996195, 0.0871557, 8.74228e-08, 0.0871557, -0.996195, 0, 2.291, -25)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.27, 0.976, -25)
 fov = 70.0
 
 [node name="Skuldoo" type="CharacterBody3D" parent="."]
@@ -117,6 +118,9 @@ shape = SubResource("SphereShape3D_jrv7h")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.317735, 0.94818, 0, -0.94818, 0.317735, 0, 6.59657, 0)
+
+[node name="Node3D2" parent="." instance=ExtResource("8_xg8jn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.78366, -0.0147055, -20.9957)
 
 [connection signal="attacks_pressed" from="BattleUI/battle_options" to="BattleController" method="_on_battle_options_attacks_pressed"]
 [connection signal="flee_pressed" from="BattleUI/battle_options" to="BattleController" method="_on_battle_options_flee_pressed"]

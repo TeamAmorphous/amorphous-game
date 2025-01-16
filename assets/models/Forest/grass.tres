@@ -1,0 +1,14 @@
+[gd_resource type="QuadMesh" load_steps=3 format=3 uid="uid://cn3yx33awf1gu"]
+
+[ext_resource type="Texture2D" uid="uid://baxgcskav4wmg" path="res://assets/models/Forest/grass_grass2.png" id="1_a04lt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwhyc"]
+transparency = 1
+cull_mode = 2
+albedo_color = Color(0.858824, 0.819608, 0.423529, 1)
+albedo_texture = ExtResource("1_a04lt")
+
+[resource]
+material = SubResource("StandardMaterial3D_kwhyc")
+size = Vector2(0.3, 0.3)
+center_offset = Vector3(0, 0.15, 0)
